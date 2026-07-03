@@ -1,0 +1,9 @@
+/*
+Theme Name: FoPL Child Theme
+Template: kadence
+Version: 1.0
+*/
+
+.current-menu-item > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700;
+}
