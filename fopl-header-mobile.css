@@ -1,0 +1,271 @@
+/* ==========================================================================
+   FOPL HEADER — MOBILE / TABLET
+   Everything below applies only to the tablet/mobile header and off-canvas
+   (<1100px, .wp-block-kadence-header-tablet, .kb-off-canvas-inner)
+   ========================================================================== */
+
+/* Tablet/Mobile header bar */
+.wp-block-kadence-header-tablet {
+  background: #0E4C59 !important;
+}
+.wp-block-kadence-header-tablet .kadence-header-row-inner {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+/* Logo: no CSS styling — size/position handled manually in the builder */
+.wp-block-kadence-header-tablet .wp-block-site-logo {
+  margin-left: 0 !important;
+}
+
+/* Exact negative-margin correction confirmed via DevTools testing.
+   Scoped to the current block IDs — if these change on a future republish,
+   re-test in DevTools and update the two selectors below accordingly. */
+.wp-block-kadence-column.kadence-column66_f5159c-0a.kb-section-sm-dir-vertical {
+  margin-left: -25px !important;
+  margin-top: -20px !important;
+}
+.wp-block-kadence-column.kadence-column66_d561ee-fb {
+  margin-left: -15px !important;
+}
+
+/* Tablet width needs a different offset than phone width — same block,
+   different available space. Confirmed via DevTools at tablet breakpoint. */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .wp-block-kadence-column.kadence-column66_f5159c-0a.kb-section-sm-dir-vertical {
+    margin-left: -55px !important;
+    margin-top: -5px !important;
+  }
+}
+/* Logo + title group: tight, left-aligned. Uses stable custom classes
+   ("mobile-logo-group" on the row, "mobile-title-stack" on the text column)
+   rather than auto-generated IDs, which change on every republish. */
+.mobile-logo-group .kt-row-column-wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  column-gap: 14px !important;
+}
+.mobile-logo-group .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+.mobile-logo-group .kt-inside-inner-col {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.wp-block-kadence-header-column-tablet-left {
+  display: flex !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+/* Title + tagline text block: tight line spacing, left-aligned, correct fonts.
+   Add the custom CSS class "mobile-title-stack" to the text column (the one
+   holding "Friends of Perry Lakes" + "Floreat · WA") in the builder. */
+.mobile-title-stack .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 2px !important;
+}
+.mobile-title-stack p,
+.mobile-title-stack h1,
+.mobile-title-stack h2,
+.mobile-title-stack h3 {
+  margin: 0 !important;
+  text-align: left !important;
+}
+/* First line = site name */
+.mobile-title-stack > .kt-inside-inner-col > p:first-child,
+.mobile-title-stack > .kt-inside-inner-col > h1:first-child,
+.mobile-title-stack > .kt-inside-inner-col > h2:first-child {
+  font-family: 'Merriweather', serif !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: #FFFFFF !important;
+  line-height: 1.15 !important;
+}
+/* Second line = tagline */
+.mobile-title-stack > .kt-inside-inner-col > *:nth-child(2) {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 11px !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.62) !important;
+  line-height: 1.15 !important;
+}
+
+/* Remove left padding so logo sits flush with the edge */
+.wp-block-kadence-header-tablet .kadence-header-row-inner,
+.wp-block-kadence-header-column-tablet-left {
+  padding-left: 0 !important;
+}
+
+.wp-block-kadence-off-canvas-trigger {
+  background: #4FA3A5 !important;
+  border-radius: 6px !important;
+  color: #FFFFFF !important;
+}
+.wp-block-kadence-header-tablet .kt-svg-icons {
+  color: #FFFFFF !important;
+  margin-right: 10px !important;
+}
+
+/* Off-canvas panel background */
+.kb-off-canvas-inner-wrap {
+  background: #FFFFFF !important;
+}
+
+/* All nav link text inside off-canvas: force Lato everywhere, top level and nested,
+   whether the item has a plain label or a title+description pair */
+.kb-off-canvas-inner .kb-nav-link-content,
+.kb-off-canvas-inner .kb-nav-label-content {
+  font-family: 'Lato', sans-serif !important;
+}
+
+/* Top-level items */
+.kb-off-canvas-inner .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap {
+  padding: 12px 0 !important;
+  border-bottom: 1px solid #F0F4EF !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.kb-off-canvas-inner .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap .kb-nav-link-content,
+.kb-off-canvas-inner .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap .kb-nav-label-content {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #243033 !important;
+}
+.kb-off-canvas-inner .kb-nav-item-title-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Descriptions: shown on mobile (not hidden) */
+.kb-off-canvas-inner .kb-nav-label-description {
+  display: block !important;
+  font-family: 'Lato', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #5F6B70 !important;
+  margin-top: 2px !important;
+}
+
+/* Nested sub-menu items (one level in) */
+.kb-off-canvas-inner .sub-menu .kb-link-wrap {
+  padding: 8px 0 8px 20px !important;
+  border-bottom: none !important;
+  text-align: left !important;
+  display: block !important;
+}
+.kb-off-canvas-inner .sub-menu .kb-nav-item-title-wrap {
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 1px !important;
+}
+.kb-off-canvas-inner .sub-menu .kb-nav-link-content,
+.kb-off-canvas-inner .sub-menu .kb-nav-label-content {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #243033 !important;
+  line-height: 1.2 !important;
+}
+.kb-off-canvas-inner .sub-menu .kb-nav-label-description {
+  font-weight: 400 !important;
+  color: #5F6B70 !important;
+  line-height: 1.3 !important;
+}
+
+/* Further-indented sub-sub items (PlantFest26/25, Governance docs) — add the
+   "mp-indent" custom CSS class to these specific items in the MOBILE nav
+   (this class does not carry over from the desktop nav automatically) */
+.kb-off-canvas-inner .mp-indent .kb-link-wrap {
+  padding-left: 40px !important;
+}
+.kb-off-canvas-inner .mp-indent .kb-nav-link-content,
+.kb-off-canvas-inner .mp-indent .kb-nav-label-content {
+  font-size: 14px !important;
+}
+
+/* Accordion arrow: visible, rotates open */
+.kb-off-canvas-inner .kb-nav-dropdown-toggle-btn {
+  color: #243033 !important;
+  opacity: 1 !important;
+  transition: transform 0.2s ease !important;
+}
+.kb-off-canvas-inner .kb-nav-dropdown-toggle-btn[aria-expanded="true"] {
+  transform: rotate(180deg) !important;
+}
+
+/* Kill any centering set at the block-alignment level (WordPress "aligncenter"
+   toolbar setting, or Kadence's own container alignment) */
+.kb-off-canvas-inner .aligncenter,
+.kb-off-canvas-inner .alignwide {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: left !important;
+}
+
+/* Action buttons row (Log in / Join) — stacked, full width, left-aligned, pill shape.
+   Multiple selector paths so this works regardless of which specific classes
+   Kadence generated on this particular rebuild. */
+.mobile-cta-row .kt-row-column-wrap,
+.kb-off-canvas-inner > .kb-row-layout-wrap:last-of-type .kt-row-column-wrap,
+.kb-off-canvas-inner .kb-buttons-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin-top: -10px !important;
+  padding-top: 16px !important;
+  border-top: none !important;
+}
+.mobile-cta-row .wp-block-kadence-column,
+.kb-off-canvas-inner > .kb-row-layout-wrap:last-of-type .wp-block-kadence-column {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.mobile-cta-row .kb-button,
+.kb-off-canvas-inner > .kb-row-layout-wrap:last-of-type .kb-button,
+.kb-off-canvas-inner .kb-buttons-wrap .kb-button {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: normal !important;
+  border-radius: 999px !important;
+}
+.kb-off-canvas-inner .kt-btn-width-type-auto {
+  width: 100% !important;
+}
+
+/* Log in button on mobile: light fill instead of ghost/outline (reads better on white).
+   Add the custom CSS class "btn-login-mobile" to this button in the builder. */
+.btn-login-mobile {
+  background: #F0F4EF !important;
+  border: none !important;
+  color: #243033 !important;
+}
+
+/* Join button on mobile: same gold fill as desktop.
+   Add the custom CSS class "btn-join-mobile" to this button in the builder. */
+.btn-join-mobile {
+  background: #C4A35A !important;
+  border: none !important;
+  color: #3D2E0A !important;
+  font-weight: 700 !important;
+}
+
+/* Close button icon color */
+.kb-off-canvas-close {
+  color: #243033 !important;
+}

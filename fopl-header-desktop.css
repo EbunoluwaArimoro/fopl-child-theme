@@ -1,0 +1,234 @@
+/* ==========================================================================
+   FOPL HEADER — DESKTOP
+   Everything below applies only to the desktop header
+   (>=1100px, .wp-block-kadence-header-desktop)
+   ========================================================================== */
+
+/* Active nav link bold weight */
+li.wp-block-kadence-navigation-link.current-menu-item > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700 !important;
+}
+
+/* Logo group spacing */
+.kb-row-layout-id66_754360-32 .kt-row-column-wrap {
+  column-gap: 2px !important;
+}
+.kadence-column66_8ca9b3-7d .kt-inside-inner-col {
+  padding-left: 0 !important;
+}
+.kadence-column66_422408-7e .kt-inside-inner-col {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+}
+.kb-image66_4a7a4f-f5 {
+  margin-right: 0 !important;
+}
+.wp-block-kadence-header-section66_336527-96 {
+  margin-right: 24px;
+}
+
+/* Logo text */
+.kadence-column66_8ca9b3-7d {
+  min-width: 190px !important;
+  flex-shrink: 0 !important;
+}
+.kt-adv-heading66_c97ed5-bb {
+  font-family: 'Merriweather', serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+.kt-adv-heading66_13930a-92 {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.62) !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+
+/* Top-level nav link spacing */
+.wp-block-kadence-header-column-center > div > nav .kb-nav-link-content {
+  padding: 0 6px !important;
+  font-size: 14px !important;
+}
+.wp-block-kadence-header-column-center {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+
+/* Top-level nav chevron: hide Kadence's native SVG, draw our own */
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  width: auto !important;
+}
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap .kb-nav-dropdown-toggle-btn svg {
+  display: none !important;
+}
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap .kb-nav-dropdown-toggle-btn {
+  position: static !important;
+  flex-shrink: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 0 0 6px !important;
+  background: none !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.55 !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item:hover > .kb-link-wrap .kb-nav-dropdown-toggle-btn,
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item:focus-within > .kb-link-wrap .kb-nav-dropdown-toggle-btn {
+  opacity: 0.9 !important;
+  transform: rotate(180deg) !important;
+}
+.wp-block-kadence-header-desktop nav.navigation > .menu-container > ul.kb-navigation > li.menu-item > .kb-link-wrap .kb-nav-dropdown-toggle-btn::after {
+  content: "" !important;
+  display: block !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-right: 1.5px solid rgba(255,255,255,0.55) !important;
+  border-bottom: 1.5px solid rgba(255,255,255,0.55) !important;
+  transform: rotate(45deg) !important;
+  margin-top: -3px !important;
+}
+
+/* Right-side section: search, log in, join */
+.kb-row-layout-id66_1ca1f9-46 .kt-row-column-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  flex-wrap: nowrap !important;
+}
+.kb-row-layout-id66_1ca1f9-46 .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Mega menu container (matches prototype exactly: min-width 300px) */
+.sub-menu.kb-nav-sub-menu.mega-menu {
+  box-sizing: border-box !important;
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  left: 0 !important;
+  right: auto !important;
+  background: #FFFFFF !important;
+  border-top: 3px solid #C4A35A !important;
+  border-radius: 0 0 10px 10px !important;
+  box-shadow: 0 28px 56px -22px rgba(10,47,55,0.45) !important;
+  padding: 12px !important;
+  max-height: 80vh !important;
+  overflow-y: auto !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu .kb-row-layout-wrap,
+.sub-menu.kb-nav-sub-menu.mega-menu .kt-row-column-wrap,
+.sub-menu.kb-nav-sub-menu.mega-menu .wp-block-kadence-column {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Reset competing padding sources inside dropdown items */
+.sub-menu.kb-nav-sub-menu.mega-menu .kt-inside-inner-col {
+  padding: 0 !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu li {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu li a.kb-nav-link-content {
+  padding: 0 !important;
+  display: block !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu li .kb-link-wrap {
+  padding: 11px 14px !important;
+  display: block !important;
+  border-radius: 7px !important;
+  transition: background 0.15s ease !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu li:hover .kb-link-wrap {
+  background: #F0F4EF !important;
+}
+
+/* Indented sub-items (PlantFest26/25, Governance docs) — desktop mega menu.
+   Higher specificity than the reset rule above, so this wins */
+.sub-menu.kb-nav-sub-menu.mega-menu li.mp-indent .kb-link-wrap {
+  padding-left: 28px !important;
+}
+.sub-menu.kb-nav-sub-menu.mega-menu .mp-indent .kb-nav-label-content {
+  font-size: 13px !important;
+}
+
+/* Dropdown chevron (e.g. PlantFest toggle inside white panel) — dark, not white */
+.sub-menu.kb-nav-sub-menu .kb-nav-dropdown-toggle-btn {
+  color: rgba(36,48,51,0.55) !important;
+}
+
+/* Title + description text — desktop mega menu items */
+.wp-block-kadence-header-desktop .kb-nav-label-content {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+  color: #243033 !important;
+  display: block !important;
+}
+.wp-block-kadence-header-desktop .kb-nav-label-description {
+  font-family: 'Lato', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  color: #5F6B70 !important;
+  display: block !important;
+  margin-top: 2px !important;
+}
+
+/* Header buttons */
+.kb-btn66_b5ab8d-79 {
+  background: transparent !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+  border-radius: 999px !important;
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding: 10px 20px !important;
+  white-space: nowrap !important;
+  height: auto !important;
+  width: auto !important;
+  display: inline-flex !important;
+}
+.kb-btn66_b5ab8d-79:hover {
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+.kb-btn66_b01e59-4b {
+  background: #C4A35A !important;
+  border: none !important;
+  border-radius: 999px !important;
+  color: #3D2E0A !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding: 10px 20px !important;
+  white-space: nowrap !important;
+  height: auto !important;
+  width: auto !important;
+  display: inline-flex !important;
+}
+.kb-btn66_b01e59-4b:hover {
+  background: #D4B46C !important;
+}
+
+/* Search icon */
+.kt-svg-icons66_0a1272-cf {
+  color: rgba(255,255,255,0.8) !important;
+}
