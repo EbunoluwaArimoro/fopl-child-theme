@@ -4,6 +4,7 @@ Template: kadence
 Version: 1.0
 */
 
-.current-menu-item > .kb-link-wrap > .kb-nav-link-content {
-  font-weight: 700;
+/* Add active nav link bold weight override */
+li.wp-block-kadence-navigation-link.current-menu-item > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700 !important;
 }
