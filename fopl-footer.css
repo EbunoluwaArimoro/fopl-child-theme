@@ -1,0 +1,293 @@
+/* ==========================================================================
+   FOPL FOOTER — CONSOLIDATED STYLES
+   ========================================================================== */
+
+/* ---- Responsive column collapse ----
+   Kadence's Row Layout only outputs ONE column template; it can't reduce
+   column COUNT per device on its own. These override the stuck values
+   at tablet (900px) and mobile (560px), matching the prototype's own
+   breakpoints exactly. */
+
+/* Main 4-column grid (logo/tagline+social, Quick links, Contact, Stay connected) */
+@media (max-width: 900px) {
+  #block-10 .kt-row-column-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 560px) {
+  #block-10 .kt-row-column-wrap {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lens strip (4 photos) */
+@media (max-width: 900px) {
+  #block-14 .kt-row-column-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 560px) {
+  #block-14 .kt-row-column-wrap {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* ---- Vertical rhythm between sections ---- */
+#block-10 .kt-row-column-wrap,
+#block-14 .kt-row-column-wrap {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+/* ---- Lens strip thumbnails: correct aspect ratio + rounded corners ---- */
+#block-14 figure.wp-block-kadence-image {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 0 !important;
+}
+#block-14 figure.wp-block-kadence-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Kill default WordPress widget margin (the real source of the big gap
+   below the Lens strip) ----
+   Kadence/WP apply margin-bottom to every .widget by default. With five
+   separate widgets stacked in this footer, that compounds significantly. */
+#block-10, #block-12, #block-14, #block-17, #block-18 {
+  margin-bottom: 0 !important;
+}
+#block-12 {
+  margin-top: 24px !important;
+}
+
+/* Deliberate breathing room between the Lens strip and the divider line below it */
+#block-14 {
+  margin-bottom: 44px !important;
+}
+
+/* ---- Lens strip: correct gap (prototype uses 12px) + capped width on desktop ---- */
+#block-14 .kt-row-column-wrap {
+  column-gap: 12px !important;
+  row-gap: 12px !important;
+  max-width: 560px !important;
+}
+@media (max-width: 900px) {
+  #block-14 .kt-row-column-wrap {
+    max-width: none !important;
+  }
+}
+
+/* ---- Quick Links: item spacing ---- */
+.wp-block-kadence-navigation336-cpt-id {
+  --kb-nav-row-gap: 0px !important;
+}
+
+/* ---- Contact: gap between email and address ---- */
+.kt-adv-heading276983-ee a {
+  display: inline-block !important;
+  margin-bottom: 20px !important;
+}
+/* Contact link: match the paragraph's own font, don't inherit theme default link font */
+.kt-adv-heading276983-ee a {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* ---- Acknowledgment bar (#block-18): true full-bleed, edge to edge ---- */
+#block-18 {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  background: #0a3b45 !important;
+}
+#block-18 .kt-row-column-wrap,
+#block-18 .wp-block-kadence-column,
+#block-18 .kt-inside-inner-col {
+  max-width: none !important;
+}
+#block-18 p {
+  padding: 0px 20px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  color: rgba(240,244,239,0.62) !important;
+}
+
+/* ---- Utility row (#block-17): copyright + "Supported by..." side by side,
+   restore the divider line, fix tablet alignment ---- */
+#block-17 {
+  border-top: 1px solid rgba(240,244,239,0.14) !important;
+}
+#block-17 .kt-row-column-wrap {
+  display: flex !important;
+  grid-template-columns: none !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+}
+#block-17 .wp-block-kadence-column {
+  flex: 0 1 auto !important;
+  width: auto !important;
+}
+#block-17 p {
+  margin: 0 !important;
+  font-size: 12.5px !important;
+}
+#block-17 .kt-adv-headinge9ee72-f5 {
+  text-align: right !important;
+  font-weight: 400 !important;
+}
+#block-17 .kt-adv-headingd235bb-74 a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+@media (max-width: 560px) {
+  #block-17 .kt-row-column-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  #block-17 .kt-adv-headinge9ee72-f5 {
+    text-align: left !important;
+  }
+}
+
+/* ---- Social icons: compact, side by side, exact prototype spacing ---- */
+.kb-row-layout-id4fe3a5-60 .kt-row-column-wrap {
+  display: flex !important;
+  grid-template-columns: none !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.kb-row-layout-id4fe3a5-60 .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+}
+.kb-row-layout-id4fe3a5-60 .kt-svg-icon-wrap {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ---- Quick Links hover: real underline, not the border-simulation trick ---- */
+.kb-nav-link-snc4ynjoa .kb-nav-link-content,
+.kb-nav-link-3roavwf6d .kb-nav-link-content,
+.kb-nav-link-iq7ds9ltl .kb-nav-link-content,
+.kb-nav-link-pse9o5126 .kb-nav-link-content,
+.kb-nav-link-tls0m0oka .kb-nav-link-content,
+.kb-nav-link-1bla58sbf .kb-nav-link-content,
+.kb-nav-link-gib0bh56u .kb-nav-link-content,
+.kb-nav-link-n0cs1uf9m .kb-nav-link-content {
+  transition: color 0.15s ease !important;
+}
+.kb-nav-link-snc4ynjoa:hover .kb-nav-link-content,
+.kb-nav-link-3roavwf6d:hover .kb-nav-link-content,
+.kb-nav-link-iq7ds9ltl:hover .kb-nav-link-content,
+.kb-nav-link-pse9o5126:hover .kb-nav-link-content,
+.kb-nav-link-tls0m0oka:hover .kb-nav-link-content,
+.kb-nav-link-1bla58sbf:hover .kb-nav-link-content,
+.kb-nav-link-gib0bh56u:hover .kb-nav-link-content,
+.kb-nav-link-n0cs1uf9m:hover .kb-nav-link-content {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+/* Kill the border-based hover/normal/active system entirely, in every state,
+   so no border can show at any point. Underline-on-hover above is the
+   only visual indicator. */
+.wp-block-kadence-navigation336-cpt-id {
+  --kb-nav-top-link-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-border-left: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-left: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-left: 0px solid transparent !important;
+}
+.wp-block-kadence-navigation336-cpt-id .kb-link-wrap {
+  border: none !important;
+}
+/* Specific stuck override that wouldn't clear via the UI on the "What's on" link */
+.kb-nav-link-3roavwf6d > .kb-link-wrap.kb-link-wrap.kb-link-wrap.kb-link-wrap {
+  --kb-nav-link-hover-border-bottom: 1px solid var(--global-palette8, #F7FAFC) !important;
+}
+
+
+/* ==========================================================================
+   GRAVITY FORMS — Footer newsletter signup
+   Scoped to this specific form instance so it doesn't affect any other
+   Gravity Forms elsewhere on the site.
+   ========================================================================== */
+#gform_wrapper_1 {
+  margin-top: 4px !important;
+  --gf-color-primary: #C4A35A;
+  --gf-color-primary-contrast: #3D2E0A;
+  --gf-color-in-ctrl: rgba(255,255,255,0.08);
+  --gf-color-in-ctrl-contrast: #FFFFFF;
+  --gf-color-out-ctrl-light: rgba(240,244,239,0.28);
+}
+#gform_wrapper_1 .gform_fields {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+#gform_wrapper_1 .gfield {
+  margin: 0 !important;
+}
+#gform_wrapper_1 .gfield--type-email {
+  flex: 1 1 150px !important;
+}
+#gform_wrapper_1 .gfield--type-submit {
+  flex: 0 0 auto !important;
+}
+#gform_wrapper_1 label.gfield_label {
+  display: none !important; /* prototype relies on placeholder text only */
+}
+#gform_wrapper_1 input[type="email"] {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(240,244,239,0.28) !important;
+  border-radius: 8px !important;
+  color: #FFFFFF !important;
+  padding: 11px 13px !important;
+  font-family: 'Lato', sans-serif !important;
+  font-size: 13.5px !important;
+  width: 100% !important;
+}
+#gform_wrapper_1 input[type="email"]::placeholder {
+  color: rgba(240,244,239,0.5) !important;
+}
+#gform_wrapper_1 .gform-button {
+  background: #4FA3A5 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  padding: 11px 18px !important;
+  white-space: nowrap;
+}
+#gform_wrapper_1 .gform-button:hover {
+  background: #5fb3b5 !important;
+}
+#gform_wrapper_1 .gform_footer,
+#gform_wrapper_1 .gform-footer {
+  display: none !important; /* hides Gravity Forms' own footer spacing wrapper, layout handled above */
+}
