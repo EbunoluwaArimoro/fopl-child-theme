@@ -9,45 +9,16 @@ li.wp-block-kadence-navigation-link.current-menu-item > .kb-link-wrap > .kb-nav-
   font-weight: 700 !important;
 }
 
-/* Logo group spacing */
-.kb-row-layout-id66_754360-32 .kt-row-column-wrap {
-  column-gap: 2px !important;
-}
-.kadence-column66_8ca9b3-7d .kt-inside-inner-col {
-  padding-left: 0 !important;
-}
-.kadence-column66_422408-7e .kt-inside-inner-col {
-  padding-right: 0 !important;
-  margin-right: 0 !important;
+/* Logo (landscape lockup image, replaces old icon+text setup) */
+.wp-block-kadence-header-section66_336527-96 {
+  margin-right: 24px;
 }
 .kb-image66_4a7a4f-f5 {
   margin-right: 0 !important;
 }
-.wp-block-kadence-header-section66_336527-96 {
-  margin-right: 24px;
-}
-
-/* Logo text */
-.kadence-column66_8ca9b3-7d {
-  min-width: 190px !important;
-  flex-shrink: 0 !important;
-}
-.kt-adv-heading66_c97ed5-bb {
-  font-family: 'Merriweather', serif !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
-  color: #FFFFFF !important;
-  white-space: nowrap !important;
-  margin: 0 !important;
-}
-.kt-adv-heading66_13930a-92 {
-  font-family: 'Lato', sans-serif !important;
-  font-size: 11px !important;
-  letter-spacing: 1.5px !important;
-  text-transform: uppercase !important;
-  color: rgba(255,255,255,0.62) !important;
-  white-space: nowrap !important;
-  margin: 0 !important;
+.kb-image66_4a7a4f-f5 img {
+  max-height: 56px !important;
+  width: auto !important;
 }
 
 /* Top-level nav link spacing */

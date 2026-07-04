@@ -11,97 +11,21 @@
 .wp-block-kadence-header-tablet .kadence-header-row-inner {
   padding-top: 8px !important;
   padding-bottom: 8px !important;
-}
-/* Logo: no CSS styling — size/position handled manually in the builder */
-.wp-block-kadence-header-tablet .wp-block-site-logo {
-  margin-left: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
 }
 
-/* Exact negative-margin correction confirmed via DevTools testing.
-   Scoped to the current block IDs — if these change on a future republish,
-   re-test in DevTools and update the two selectors below accordingly. */
-.wp-block-kadence-column.kadence-column66_f5159c-0a.kb-section-sm-dir-vertical {
-  margin-left: -25px !important;
-  margin-top: -20px !important;
-}
-.wp-block-kadence-column.kadence-column66_d561ee-fb {
-  margin-left: -15px !important;
-}
-
-/* Tablet width needs a different offset than phone width — same block,
-   different available space. Confirmed via DevTools at tablet breakpoint. */
-@media (min-width: 768px) and (max-width: 1099px) {
-  .wp-block-kadence-column.kadence-column66_f5159c-0a.kb-section-sm-dir-vertical {
-    margin-left: -55px !important;
-    margin-top: -5px !important;
-  }
-}
-/* Logo + title group: tight, left-aligned. Uses stable custom classes
-   ("mobile-logo-group" on the row, "mobile-title-stack" on the text column)
-   rather than auto-generated IDs, which change on every republish. */
-.mobile-logo-group .kt-row-column-wrap {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  column-gap: 14px !important;
-}
-.mobile-logo-group .wp-block-kadence-column {
-  flex: 0 0 auto !important;
+/* Logo (landscape lockup image, replaces old icon+text setup).
+   No negative margins needed anymore — those were compensating for the old
+   two-column icon+text layout, which no longer exists. Balanced 16px padding
+   on the row above keeps equal spacing on both edges of the header. */
+.kadence-column66_d561ee-fb img {
+  max-height: 44px !important;
   width: auto !important;
-  max-width: none !important;
-}
-.mobile-logo-group .kt-inside-inner-col {
-  padding: 0 !important;
-  margin: 0 !important;
 }
 .wp-block-kadence-header-column-tablet-left {
   display: flex !important;
   justify-content: flex-start !important;
-  text-align: left !important;
-}
-
-/* Title + tagline text block: tight line spacing, left-aligned, correct fonts.
-   Add the custom CSS class "mobile-title-stack" to the text column (the one
-   holding "Friends of Perry Lakes" + "Floreat · WA") in the builder. */
-.mobile-title-stack .kt-inside-inner-col {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  gap: 2px !important;
-}
-.mobile-title-stack p,
-.mobile-title-stack h1,
-.mobile-title-stack h2,
-.mobile-title-stack h3 {
-  margin: 0 !important;
-  text-align: left !important;
-}
-/* First line = site name */
-.mobile-title-stack > .kt-inside-inner-col > p:first-child,
-.mobile-title-stack > .kt-inside-inner-col > h1:first-child,
-.mobile-title-stack > .kt-inside-inner-col > h2:first-child {
-  font-family: 'Merriweather', serif !important;
-  font-weight: 700 !important;
-  font-size: 16px !important;
-  color: #FFFFFF !important;
-  line-height: 1.15 !important;
-}
-/* Second line = tagline */
-.mobile-title-stack > .kt-inside-inner-col > *:nth-child(2) {
-  font-family: 'Lato', sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 11px !important;
-  letter-spacing: 1.2px !important;
-  text-transform: uppercase !important;
-  color: rgba(255,255,255,0.62) !important;
-  line-height: 1.15 !important;
-}
-
-/* Remove left padding so logo sits flush with the edge */
-.wp-block-kadence-header-tablet .kadence-header-row-inner,
-.wp-block-kadence-header-column-tablet-left {
-  padding-left: 0 !important;
 }
 
 .wp-block-kadence-off-canvas-trigger {
