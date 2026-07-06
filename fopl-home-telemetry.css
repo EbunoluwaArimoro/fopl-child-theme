@@ -1,0 +1,207 @@
+/* ==========================================================================
+   TELEMETRY STRIP — "Reserve live" (Option B, Stacked)
+   Neutral placeholder state — real DWER/DPIRD data wiring is next week's work
+   ========================================================================== */
+
+/* Outer row — fresh-teal background, dashed top border, solid bottom border */
+.kb-row-layout-id460_d42e69-18 {
+  background: #4FA3A5 !important;
+  border-top: 2px dashed rgba(255,255,255,0.25) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+  margin-top: 0 !important;
+}
+/* Remove any stray border on the outer wrapping column/row — this, not an
+   individual cell, was the source of the faint line on the right edge.
+   Escalated specificity (repeated class) + every longhand property individually,
+   since Kadence's own block border styling appears to match our original
+   specificity and was winning on source order. */
+.kb-row-layout-id460_d42e69-18 .kt-row-column-wrap,
+.kadence-column460_871e25-cc.kadence-column460_871e25-cc.kadence-column460_871e25-cc,
+.kb-row-layout-id460_d392f5-d7 .kt-row-layout-wrap {
+  border: none !important;
+  border-right: none !important;
+  border-right-width: 0 !important;
+  border-right-style: none !important;
+  border-right-color: transparent !important;
+}
+.kadence-column460_871e25-cc.kadence-column460_871e25-cc.kadence-column460_871e25-cc > .kt-inside-inner-col {
+  border: none !important;
+  border-right: none !important;
+  border-right-width: 0 !important;
+  border-right-style: none !important;
+}
+
+/* Grid: label column auto-width, 4 equal data columns */
+.kb-row-layout-id460_d392f5-d7 .kt-row-column-wrap {
+  display: grid !important;
+  grid-template-columns: auto repeat(4, 1fr) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+@media (max-width: 1020px) {
+  .kb-row-layout-id460_d392f5-d7 .kt-row-column-wrap {
+    grid-template-columns: 1fr !important;
+  }
+  /* Switch every column to a horizontal divider instead of a vertical one.
+     Desktop's border-right lives in its own min-width:1021px query above,
+     so there's no possibility of both rules applying at once anymore. */
+  .kadence-column460_9300ca-d9,
+  .kadence-column460_8ecc3b-50,
+  .kadence-column460_2b971f-b9,
+  .kadence-column460_e21ee9-7a,
+  .kadence-column460_171255-7c {
+    border-bottom: 1px solid rgba(255,255,255,0.18) !important;
+    min-width: 0 !important;
+  }
+  .kadence-column460_171255-7c {
+    border-bottom: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .kb-row-layout-id460_d392f5-d7 .kt-row-column-wrap {
+    grid-template-columns: 1fr !important;
+  }
+  /* Slightly larger type for legibility once everything is full-width and stacked */
+  .kt-adv-heading460_a781d5-59,
+  .kt-adv-heading460_464b22-a0,
+  .kt-adv-heading460_4608b8-23,
+  .kt-adv-heading460_721dae-c9 {
+    font-size: 12px !important;
+  }
+  .kt-adv-heading460_7aac63-b5,
+  .kt-adv-heading460_eca68a-b1,
+  .kt-adv-heading460_91e56f-77,
+  .kt-adv-heading460_6c850b-53 {
+    font-size: 22px !important;
+  }
+  .kt-adv-heading460_a1e545-f9,
+  .kt-adv-heading460_bb51dd-f6,
+  .kt-adv-heading460_729c29-7c,
+  .kt-adv-heading460_8b222d-95 {
+    font-size: 11px !important;
+  }
+}
+
+/* ---- Column 1: "Reserve live" + date ---- */
+.kadence-column460_9300ca-d9 {
+  padding: 20px 20px !important;
+  min-width: 160px !important;
+}
+/* Desktop-only divider — explicit min-width range, mutually exclusive with
+   the mobile max-width:1020px rule below. Cannot both apply at once. */
+@media (min-width: 1021px) {
+  .kadence-column460_9300ca-d9 {
+    border-right: 1px solid rgba(255,255,255,0.18) !important;
+  }
+}
+.kadence-column460_9300ca-d9 .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+}
+.kt-adv-heading460_041791-f5 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.92) !important;
+  margin: 0 !important;
+}
+.kt-adv-heading460_73a665-68 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+  color: rgba(255,255,255,0.72) !important;
+  margin: 0 !important;
+}
+
+/* ---- Data cells (columns 2-5): shared layout ---- */
+.kadence-column460_8ecc3b-50,
+.kadence-column460_2b971f-b9,
+.kadence-column460_e21ee9-7a,
+.kadence-column460_171255-7c {
+  padding: 20px 20px !important;
+  transition: background 0.15s ease !important;
+}
+/* Desktop-only divider — same mutually-exclusive approach as Column 1 above */
+@media (min-width: 1021px) {
+  .kadence-column460_8ecc3b-50,
+  .kadence-column460_2b971f-b9,
+  .kadence-column460_e21ee9-7a,
+  .kadence-column460_171255-7c {
+    border-right: 1px solid rgba(255,255,255,0.18) !important;
+  }
+  .kadence-column460_171255-7c {
+    border-right: none !important;
+  }
+}
+.kadence-column460_171255-7c {
+  border-right: none !important;
+}
+.kadence-column460_8ecc3b-50:hover,
+.kadence-column460_2b971f-b9:hover,
+.kadence-column460_e21ee9-7a:hover,
+.kadence-column460_171255-7c:hover {
+  background: rgba(0,0,0,0.06) !important;
+}
+.kadence-column460_8ecc3b-50 .kt-inside-inner-col,
+.kadence-column460_2b971f-b9 .kt-inside-inner-col,
+.kadence-column460_e21ee9-7a .kt-inside-inner-col,
+.kadence-column460_171255-7c .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+/* Cell labels (West Lake / East Lake / Rain today / Evap) */
+.kt-adv-heading460_a781d5-59,
+.kt-adv-heading460_464b22-a0,
+.kt-adv-heading460_4608b8-23,
+.kt-adv-heading460_721dae-c9 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.72) !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+/* Cell values (currently the em-dash placeholder) */
+.kt-adv-heading460_7aac63-b5,
+.kt-adv-heading460_eca68a-b1,
+.kt-adv-heading460_91e56f-77,
+.kt-adv-heading460_6c850b-53 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+/* Cell unit labels (AHD / Since 9am / Since 12am) */
+.kt-adv-heading460_a1e545-f9,
+.kt-adv-heading460_bb51dd-f6,
+.kt-adv-heading460_729c29-7c,
+.kt-adv-heading460_8b222d-95 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.65) !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
