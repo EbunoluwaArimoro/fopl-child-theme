@@ -1,0 +1,149 @@
+/* ==========================================================================
+   LAKE UPDATE — Alert bar
+   ========================================================================== */
+
+/* Outer row — charcoal background (already set via palette class).
+   Fixed height is DESKTOP-ONLY (single-line layout, safe to clip at 65px).
+   Tablet and mobile get auto height instead, since the message can wrap
+   to two lines on tablet, and stacks into 3 full lines on mobile — the
+   fixed height was clipping both of those, cutting text off. */
+.kb-row-layout-id460_570261-db {
+  display: flex !important;
+  align-items: center !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+}
+@media (min-width: 1021px) {
+  .kb-row-layout-id460_570261-db {
+    height: 65px !important;
+    max-height: 65px !important;
+    overflow: hidden !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+@media (max-width: 1020px) {
+  .kb-row-layout-id460_570261-db {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    align-items: flex-start !important;
+  }
+  .kb-row-layout-id460_676e43-c1 .kt-row-column-wrap {
+    align-items: flex-start !important;
+  }
+}
+.kb-row-layout-id460_570261-db .kt-row-column-wrap {
+  width: 100% !important;
+  padding-left: clamp(20px, 4vw, 30px) !important;
+  padding-right: clamp(20px, 4vw, 30px) !important;
+}
+
+/* Zero any residual spacing Kadence adds to the 3 wrapping columns/inner-cols,
+   this is very likely the real source of the extra height */
+.kadence-column460_043cac-ea,
+.kadence-column460_7028d0-11,
+.kadence-column460_280788-c6,
+.kadence-column460_043cac-ea .kt-inside-inner-col,
+.kadence-column460_7028d0-11 .kt-inside-inner-col,
+.kadence-column460_280788-c6 .kt-inside-inner-col {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Inner 3-part row: flex, centered, wraps on small screens */
+.kb-row-layout-id460_676e43-c1 .kt-row-column-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+}
+.kb-row-layout-id460_676e43-c1 .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+}
+/* The message column should be the one that grows/shrinks to fill space */
+.kadence-column460_7028d0-11 {
+  flex: 1 1 auto !important;
+  min-width: 240px !important;
+}
+@media (max-width: 640px) {
+  .kb-row-layout-id460_676e43-c1 .kt-row-column-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .kadence-column460_7028d0-11 {
+    min-width: 0 !important;
+  }
+}
+
+/* Push "Read the report" link to the far right */
+.kadence-column460_280788-c6 {
+  margin-left: auto !important;
+}
+
+span.kb-button.kb-btn460_096a5a-e9 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  background: #4FA3A5 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 2px !important;
+  padding: 5px 11px !important;
+  line-height: 1.4 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  cursor: default !important;
+  pointer-events: none !important;
+}
+.kb-buttons-wrap.kb-btns460_dbff3a-cf {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+/* ---- Message text ---- */
+.kt-adv-heading460_dc33e5-0b {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 15px !important;
+  color: rgba(255,255,255,0.92) !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+}
+/* The italicized first sentence — reduced from bold to regular weight to
+   match the prototype. Boosted specificity (repeated class) since a plain
+   single-class rule wasn't fully overriding whatever weight Kadence's
+   Advanced Heading block was applying internally. */
+.kt-adv-heading460_dc33e5-0b em,
+.kt-adv-heading460_dc33e5-0b.kt-adv-heading460_dc33e5-0b em {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+}
+
+/* ---- "Read the report →" link ---- */
+.kt-adv-heading460_f4c4d8-f0 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #7BB6CF !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 1.5px !important;
+  text-underline-offset: 3px !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  transition: color 0.15s ease !important;
+}
+.kt-adv-heading460_f4c4d8-f0:hover {
+  color: #FFFFFF !important;
+}
