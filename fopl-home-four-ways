@@ -1,0 +1,276 @@
+/* ==========================================================================
+   FOUR WAYS WE CARE — "What we do" section
+   ========================================================================== */
+
+/* Section: exact padding on all four sides.
+   Reduced top/bottom by 30px (96→66), with a separate mobile reduction below. */
+#four-ways-section {
+  background: linear-gradient(180deg, #F0F4EF 0%, #FFFFFF 100%) !important;
+  padding-top: 66px !important;
+  padding-bottom: 66px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+@media (max-width: 640px) {
+  #four-ways-section {
+    padding-top: 76px !important;
+    padding-bottom: 76px !important;
+  }
+}
+
+/* Single source of truth for left/right padding — applied here only, so the
+   text above and the icon grid below always share exactly the same edges.
+   +10px added to the previous clamp value on each side. */
+#four-ways-section .kt-row-column-wrap {
+  padding-left: calc(clamp(20px, 4vw, 40px) + 10px) !important;
+  padding-right: calc(clamp(20px, 4vw, 40px) + 10px) !important;
+}
+/* Make sure the nested pillars row doesn't add its own conflicting padding/margin,
+   including its own column-wrap (the actual grid container), not just the outer wraps */
+#four-ways-section .kb-row-layout-id460_ece257-d6,
+#four-ways-section .kb-row-layout-id460_ece257-d6 .kt-row-layout-wrap,
+#four-ways-section .kb-row-layout-id460_ece257-d6 > .kt-row-column-wrap {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Headgroup width constraint — eyebrow caps at 720px (matches prototype's
+   .headgroup rule). H2 is unconstrained (see below, forced to one line instead). */
+.kt-adv-heading460_19555c-e3 {
+  max-width: 720px !important;
+}
+
+/* Eyebrow — "What we do". Corrected: base .eyebrow is 12px, not 11px */
+.kt-adv-heading460_19555c-e3 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #0E4C59 !important;
+  margin: 0 !important;
+}
+
+/* H2 — "Four ways we care for Perry Lakes." margin-top:10px per prototype's section__head h2 rule.
+   No max-width cap here specifically (unlike eyebrow/paragraph) and a slightly
+   reduced clamp ceiling, so this renders on one line rather than wrapping. */
+.kt-adv-heading460_32239b-87 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(28px, 3vw, 38px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+  color: #0E4C59 !important;
+  margin: 10px 0 0 0 !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 768px) {
+  .kt-adv-heading460_32239b-87 {
+    white-space: normal !important;
+  }
+}
+
+/* Intro paragraph — margin-top:10px per prototype, plus 48px space before the grid
+   (equivalent to prototype's .section__head margin-bottom:48px on the whole group).
+   max-width:620px is the prototype's actual value for THIS element specifically
+   (the eyebrow's 720px cap doesn't apply here) — confirmed by where the line
+   genuinely wraps after "local" in the prototype. */
+#four-ways-section .kadence-column460_64301f-8e > .kt-inside-inner-col > p.wp-block-paragraph {
+  font-size: 17px !important;
+  color: #5F6B70 !important;
+  max-width: 620px !important;
+  margin: 10px 0 48px 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* ---- Pillars grid: 4 equal columns, 24px gap ---- */
+#four-ways-section .kb-row-layout-id460_ece257-d6 .kt-row-column-wrap {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  margin-top: -20px;
+}
+@media (max-width: 1020px) {
+  #four-ways-section .kb-row-layout-id460_ece257-d6 .kt-row-column-wrap {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 640px) {
+  #four-ways-section .kb-row-layout-id460_ece257-d6 .kt-row-column-wrap {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ---- Each card ---- */
+#four-ways-section .kadence-column460_da5eb0-c2,
+#four-ways-section .kadence-column460_07b60e-3e,
+#four-ways-section .kadence-column460_6c8e49-a5,
+#four-ways-section .kadence-column460_3cebbb-ed {
+  background: #FFFFFF !important;
+  border: 1px solid #D8D3CC !important;
+  min-height: 300px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+#four-ways-section .kadence-column460_da5eb0-c2:hover,
+#four-ways-section .kadence-column460_07b60e-3e:hover,
+#four-ways-section .kadence-column460_6c8e49-a5:hover,
+#four-ways-section .kadence-column460_3cebbb-ed:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 40px -24px rgba(14,76,89,0.3) !important;
+}
+
+/* Colored top bar per card, 6px, using ::before */
+#four-ways-section .kadence-column460_da5eb0-c2::before,
+#four-ways-section .kadence-column460_07b60e-3e::before,
+#four-ways-section .kadence-column460_6c8e49-a5::before,
+#four-ways-section .kadence-column460_3cebbb-ed::before {
+  content: "" !important;
+  display: block !important;
+  height: 6px !important;
+  width: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 2 !important;
+}
+#four-ways-section .kadence-column460_da5eb0-c2::before { background: #0E4C59 !important; } /* Habitat */
+#four-ways-section .kadence-column460_07b60e-3e::before { background: #4FA3A5 !important; } /* Science */
+#four-ways-section .kadence-column460_6c8e49-a5::before { background: #6B8F71 !important; } /* Community */
+#four-ways-section .kadence-column460_3cebbb-ed::before { background: #C4A35A !important; } /* Membership */
+
+/* Card inner padding — exact prototype: 26px all sides */
+#four-ways-section .kadence-column460_da5eb0-c2 .kt-inside-inner-col,
+#four-ways-section .kadence-column460_07b60e-3e .kt-inside-inner-col,
+#four-ways-section .kadence-column460_6c8e49-a5 .kt-inside-inner-col,
+#four-ways-section .kadence-column460_3cebbb-ed .kt-inside-inner-col {
+  padding: 26px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  gap: 0 !important;
+}
+
+/* Alternate card background tint (Science + Membership sit on reed-white per prototype) */
+#four-ways-section .kadence-column460_07b60e-3e,
+#four-ways-section .kadence-column460_3cebbb-ed {
+  background: #F0F4EF !important;
+}
+
+/* ---- Icon: exact prototype spec — 44x44, white bg, 50% radius, 9px padding,
+   subtle shadow, NO border. Targets the actual wrap element that renders the
+   circle in Kadence's structure (.kb-svg-icon-wrap), not the outer container. ---- */
+#four-ways-section .kt-svg-icons460_8fa413-71 .kb-svg-icon-wrap,
+#four-ways-section .kt-svg-icons460_ed6fbf-b6 .kb-svg-icon-wrap,
+#four-ways-section .kt-svg-icons460_62b836-eb .kb-svg-icon-wrap,
+#four-ways-section .kt-svg-icons460_489b04-ff .kb-svg-icon-wrap {
+  width: 44px !important;
+  height: 44px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 9px !important;
+  box-shadow: 0 2px 0 rgba(14,76,89,0.06) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 18px !important;
+  box-sizing: border-box !important;
+}
+#four-ways-section .kt-svg-icons460_8fa413-71 .kb-svg-icon-wrap svg,
+#four-ways-section .kt-svg-icons460_ed6fbf-b6 .kb-svg-icon-wrap svg,
+#four-ways-section .kt-svg-icons460_62b836-eb .kb-svg-icon-wrap svg,
+#four-ways-section .kt-svg-icons460_489b04-ff .kb-svg-icon-wrap svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+#four-ways-section .kt-svg-icons460_8fa413-71 svg { color: #0E4C59 !important; }
+#four-ways-section .kt-svg-icons460_ed6fbf-b6 svg { color: #4FA3A5 !important; }
+#four-ways-section .kt-svg-icons460_62b836-eb svg { color: #6B8F71 !important; }
+#four-ways-section .kt-svg-icons460_489b04-ff svg { color: #C4A35A !important; }
+
+/* ---- Category tag (Habitat / Science / Community / Membership) ----
+   Uses the stable "pillar-tag" custom class — add this in the builder to
+   each of the 4 tag paragraphs, replacing the fragile inline-style targeting. */
+#four-ways-section .pillar-tag {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+}
+#four-ways-section .kadence-column460_da5eb0-c2 .pillar-tag { color: #0E4C59 !important; }
+#four-ways-section .kadence-column460_07b60e-3e .pillar-tag { color: #4FA3A5 !important; }
+#four-ways-section .kadence-column460_6c8e49-a5 .pillar-tag { color: #6B8F71 !important; }
+#four-ways-section .kadence-column460_3cebbb-ed .pillar-tag { color: #C4A35A !important; }
+
+/* Fallback, in case the class hasn't been added yet — safe to leave in either way */
+#four-ways-section .kadence-column460_da5eb0-c2 p[style*="uppercase"],
+#four-ways-section .kadence-column460_07b60e-3e p[style*="uppercase"],
+#four-ways-section .kadence-column460_6c8e49-a5 p[style*="uppercase"],
+#four-ways-section .kadence-column460_3cebbb-ed p[style*="uppercase"] {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+}
+#four-ways-section .kadence-column460_da5eb0-c2 p[style*="uppercase"] { color: #0E4C59 !important; }
+#four-ways-section .kadence-column460_07b60e-3e p[style*="uppercase"] { color: #4FA3A5 !important; }
+#four-ways-section .kadence-column460_6c8e49-a5 p[style*="uppercase"] { color: #6B8F71 !important; }
+#four-ways-section .kadence-column460_3cebbb-ed p[style*="uppercase"] { color: #C4A35A !important; }
+
+/* ---- Card titles ---- */
+.kt-adv-heading460_220453-49,
+.kt-adv-heading460_4da8e4-76,
+.kt-adv-heading460_eb7a16-2b,
+.kt-adv-heading460_f05e79-64 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+  line-height: 1.2 !important;
+  color: #243033 !important;
+  margin: 0 0 10px 0 !important;
+}
+
+/* ---- Card descriptions ---- */
+.kt-adv-heading460_19a8b5-3e,
+.kt-adv-heading460_e80c48-48,
+.kt-adv-heading460_e38fe8-38,
+.kt-adv-heading460_034e93-c5 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  color: #243033 !important;
+  opacity: 0.78 !important;
+  margin: 0 0 18px 0 !important;
+}
+
+/* ---- CTA links: pinned to bottom of card, category color ---- */
+.kt-adv-heading460_f8ae01-30,
+.kt-adv-heading460_acb250-4c,
+.kt-adv-heading460_7ad8ab-d7,
+.kt-adv-heading460_9d42ca-ea {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  margin: auto 0 0 0 !important;
+  cursor: pointer !important;
+  transition: text-decoration 0.15s ease !important;
+}
+.kt-adv-heading460_f8ae01-30:hover,
+.kt-adv-heading460_acb250-4c:hover,
+.kt-adv-heading460_7ad8ab-d7:hover,
+.kt-adv-heading460_9d42ca-ea:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.kt-adv-heading460_f8ae01-30 { color: #0E4C59 !important; }
+.kt-adv-heading460_acb250-4c { color: #4FA3A5 !important; }
+.kt-adv-heading460_7ad8ab-d7 { color: #6B8F71 !important; }
+.kt-adv-heading460_9d42ca-ea { color: #C4A35A !important; }
