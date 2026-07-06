@@ -1,0 +1,264 @@
+/* ==========================================================================
+   HOMEPAGE HERO — FINAL
+   Literal transcription of prototype values, with Ebun's manual adjustments
+   preserved exactly. Confirmed complete.
+   ========================================================================== */
+
+/* Kill Kadence's forced grid-gap between stacked elements (not in prototype) */
+#hero-section .kt-row-column-wrap {
+  gap: 0 !important;
+  position: static !important;
+}
+#hero-section .kt-adv-heading460_998a83-62,
+#hero-section .kt-adv-heading460_247c1c-62,
+#hero-section .kt-adv-heading460_46cc53-bf,
+#hero-section .kt-adv-heading460_8ddb3e-a4,
+#hero-section .kadence-column460_fce596-c6 {
+  margin: 0 !important;
+}
+
+/* Reduced from 720px per feedback (too tall) */
+#hero-section {
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 480px !important;
+}
+
+/* Increased top padding, reduced bottom padding to help control overall height */
+#hero-section .kt-row-column-wrap {
+  padding: 140px clamp(20px, 4vw, 40px) 90px !important;
+  max-width: 1000px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* .hero .eyebrow — base .eyebrow (Lato 700, 12px, .22em, uppercase, fresh-teal)
+   + hero override: margin-bottom:18px */
+.kt-adv-heading460_998a83-62 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #4FA3A5 !important;
+  margin-bottom: 22px !important;
+}
+
+/* .hero h1 — base h1 (Merriweather 700) + hero override: margin-bottom:20px, text-wrap:balance
+   color reed-white per site.css .hero h1 rule */
+.kt-adv-heading460_247c1c-62 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(40px, 5.6vw, 76px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.01em !important;
+  color: #F0F4EF !important;
+  margin-bottom: 20px !important;
+  text-wrap: balance !important;
+}
+
+.wp-block-kadence-column.kadence-column460_a8aa1f-71 {
+    margin-bottom: 10px;
+}
+
+.wp-block-kadence-column.kadence-column460_20a24d-2e {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/* .hero p.lead — font-size:21px; max-width:640px; margin:0 0 36px */
+.kt-adv-heading460_46cc53-bf {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 21px !important;
+  color: rgba(240,244,239,0.92) !important;
+  max-width: 640px !important;
+  margin: 0 0 18px 0 !important;
+}
+@media (max-width: 640px) {
+  .kt-adv-heading460_46cc53-bf {
+    font-size: 18px !important;
+  }
+}
+
+/* Mobile: more balanced top/bottom padding (was 140px top / 90px bottom on desktop) */
+@media (max-width: 640px) {
+  #hero-section .kt-row-column-wrap {
+    padding-top: 85px !important;
+    padding-bottom: 72px !important;
+  }
+}
+
+/* .hero__ctas — display:flex; gap:14px; flex-wrap:wrap.
+   Aggressively reset every possible padding/margin source, since a stray
+   left gap and missing button gap were both reported. */
+#hero-section .kadence-column460_fce596-c6,
+#hero-section .kadence-column460_fce596-c6 .kt-inside-inner-col,
+#hero-section .kb-row-layout-id460_d7c29b-2f,
+#hero-section .kb-row-layout-id460_d7c29b-2f .kt-row-layout-wrap {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+#hero-section .kadence-column460_fce596-c6 {
+  margin-top: 30px !important;
+}
+#hero-section .kb-row-layout-id460_d7c29b-2f .kt-row-column-wrap {
+  display: flex !important;
+  gap: 14px !important;
+  column-gap: 14px !important;
+  row-gap: 14px !important;
+  flex-wrap: wrap !important;
+  padding: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+#hero-section .kb-row-layout-id460_d7c29b-2f .wp-block-kadence-column,
+#hero-section .kb-row-layout-id460_d7c29b-2f .kt-inside-inner-col {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* .btn base — padding:12px 22px; border-radius:4px; font-size:15px */
+span.kb-button.kb-btn460_df8ab8-fa,
+span.kb-button.kb-btn460_33e5bc-14 {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  padding: 12px 22px !important;
+  border-radius: 4px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.08s !important;
+}
+
+/* Become a member — inline style override in prototype: white bg, deep-teal text */
+span.kb-btn460_df8ab8-fa {
+  background: #FFFFFF !important;
+  color: #0E4C59 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Discover the reserve — .btn--ghost-light */
+span.kb-btn460_33e5bc-14 {
+  background: transparent !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255,255,255,0.8) !important;
+}
+span.kb-btn460_33e5bc-14:hover {
+  background: #FFFFFF !important;
+  color: #0E4C59 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* .hero__credit — bottom:22px; right:26px; font-size:11px; letter-spacing:.08em;
+   text-transform:uppercase. Base color from site.css: rgba(240,244,239,.72).
+   Deviation you explicitly asked for: font-weight bold (not in original prototype). */
+.kt-adv-heading460_8ddb3e-a4 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important; /* your explicit request, prototype itself has no weight set */
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: rgba(240,244,239,0.9) !important;
+  position: absolute !important;
+  bottom: 22px !important;
+  right: 26px !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+#hero-section .kadence-column460_80d773-12,
+#hero-section .kadence-column460_80d773-12 .kt-inside-inner-col {
+  position: static !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Overlay gradient — matches confirmed prototype gradient exactly */
+#hero-section .kt-row-layout-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(14,76,89,0) 0%,
+    rgba(14,76,89,0.30) 40%,
+    rgba(14,76,89,0.88) 100%
+  ) !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+}
+
+/* Ken Burns zoom on background photo */
+#hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: inherit !important;
+  background-size: cover !important;
+  background-position: inherit !important;
+  animation: fopl-kenburns 28s ease-in-out infinite alternate !important;
+  z-index: -1 !important;
+}
+@keyframes fopl-kenburns {
+  from { transform: scale(1.0) translate(0,0); }
+  to   { transform: scale(1.08) translate(-1.5%,-1%); }
+}
+
+/* ==========================================================================
+   HOVER-REVEAL EFFECT — corrected logic:
+   - Hover the TEXT area specifically → overlay clears, TEXT STAYS visible
+   - Hover anywhere ELSE on the hero → overlay clears AND text also hides
+   - Photo credit is unaffected either way, always visible
+   ========================================================================== */
+#hero-section .kt-row-layout-overlay {
+  transition: opacity 0.35s ease !important;
+}
+#hero-section:hover .kt-row-layout-overlay {
+  opacity: 0 !important;
+}
+
+#hero-section .kadence-column460_a8aa1f-71,
+#hero-section .kadence-column460_750297-ec,
+#hero-section .kadence-column460_20a24d-2e,
+#hero-section .kadence-column460_fce596-c6 {
+  transition: opacity 0.3s ease 0.06s !important;
+}
+
+/* Default when hovering the hero at all: text hides */
+#hero-section:hover .kadence-column460_a8aa1f-71,
+#hero-section:hover .kadence-column460_750297-ec,
+#hero-section:hover .kadence-column460_20a24d-2e,
+#hero-section:hover .kadence-column460_fce596-c6 {
+  opacity: 0 !important;
+}
+
+/* But hovering ANYWHERE inside the shared text/button container brings ALL
+   four back together as a group. This uses the parent's own :hover state
+   (true whenever the mouse is over it OR any of its children) rather than
+   :has(), so it works in every browser without relying on newer CSS support. */
+#hero-section > .kt-row-column-wrap:hover .kadence-column460_a8aa1f-71,
+#hero-section > .kt-row-column-wrap:hover .kadence-column460_750297-ec,
+#hero-section > .kt-row-column-wrap:hover .kadence-column460_20a24d-2e,
+#hero-section > .kt-row-column-wrap:hover .kadence-column460_fce596-c6 {
+  opacity: 1 !important;
+}
+
+/* Touch devices: lock at resting state */
+@media (hover: none) {
+  #hero-section:hover .kt-row-layout-overlay,
+  #hero-section:hover .kadence-column460_a8aa1f-71,
+  #hero-section:hover .kadence-column460_750297-ec,
+  #hero-section:hover .kadence-column460_20a24d-2e,
+  #hero-section:hover .kadence-column460_fce596-c6 {
+    opacity: 1 !important;
+  }
+}
