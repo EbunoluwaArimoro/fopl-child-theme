@@ -194,24 +194,51 @@ span.kb-btn460_33e5bc-14:hover {
   opacity: 1 !important;
   position: absolute !important;
   inset: 0 !important;
-  z-index: 0 !important;
+  z-index: 1 !important;
 }
 
-/* Ken Burns zoom on background photo */
-#hero-section::before {
-  content: "" !important;
+/* Ken Burns zoom — using the REAL Kadence Image block, confirmed present in
+   the actual fresh markup (the custom class didn't save, so targeting the
+   genuine classes instead: .kadence-column460_fb9c83-a1 is the column
+   wrapping the image, .kb-image460_8eb505-35 is the figure, img.kb-img is
+   the actual image tag). This is native Kadence content, not raw HTML,
+   sidestepping whatever restricted the Custom HTML block approach entirely.
+   transform is confirmed to animate correctly on this page already. */
+.kadence-column460_fb9c83-a1 {
   position: absolute !important;
   inset: 0 !important;
-  background-image: inherit !important;
-  background-size: cover !important;
-  background-position: inherit !important;
-  animation: fopl-kenburns 28s ease-in-out infinite alternate !important;
-  z-index: -1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
-@keyframes fopl-kenburns {
-  from { transform: scale(1.0) translate(0,0); }
-  to   { transform: scale(1.08) translate(-1.5%,-1%); }
+.kadence-column460_fb9c83-a1 .kt-inside-inner-col {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
+.kb-image460_8eb505-35 {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+.kb-image460_8eb505-35 img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 38% !important;
+  animation: fopl-kenburns-img 28s ease-in-out infinite alternate !important;
+}
+@keyframes fopl-kenburns-img {
+  from { transform: scale(1.0); }
+  to   { transform: scale(1.1); }
+}
+
+
 
 /* ==========================================================================
    HOVER-REVEAL EFFECT — corrected logic:
