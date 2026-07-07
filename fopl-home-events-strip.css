@@ -1,0 +1,367 @@
+/* ==========================================================================
+   EVENTS STRIP — "What's on"
+   ========================================================================== */
+
+/* Section: reed-white background, padding-top only (bottom:0, News section
+   handles its own top spacing directly against this).
+   FIX: padding must target the inner-col wrapper directly — Kadence applies
+   a column's padding there, not on the column ID itself, which is why the
+   original rule never showed up at all when searched for. */
+#events-strip-section {
+  background: #F0F4EF !important;
+}
+#events-strip-section .kadence-column460_ac2dcc-be > .kt-inside-inner-col {
+  padding-top: 64px !important;
+  padding-bottom: 0 !important;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+
+/* FIX: force border:none on the OUTER Row Layout wraps themselves (not just
+   their .kt-row-column-wrap children). Kadence's native per-block Border
+   setting styles this outer element directly. */
+.kb-row-layout-id460_f58775-ed,
+.kb-row-layout-id460_8b3f99-a8,
+.kb-row-layout-id460_b64e59-07 {
+  border: none !important;
+}
+
+/* ---- Header row: eyebrow + H2 on the left, "See all events" on the right ---- */
+#events-strip-section .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Eyebrow */
+.kt-adv-heading460_cfe90e-b9 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #0E4C59 !important;
+  margin: 0 0 6px 0 !important;
+}
+
+/* H2 */
+.kt-adv-heading460_a1a269-0e {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(26px, 2.6vw, 34px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+  color: #0E4C59 !important;
+  margin: 0 !important;
+}
+
+/* "See all events →" — positioned to the right of the header via negative
+   margin-top pulling it up alongside the H2 */
+.kt-adv-heading460_ab573d-a3 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #1F6F8B !important;
+  margin: -22px 0 24px 0 !important;
+  align-self: flex-end !important;
+  cursor: pointer !important;
+  transition: text-decoration 0.15s ease !important;
+}
+.kt-adv-heading460_ab573d-a3:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---- Events list: white box with border, no gap between rows ---- */
+.kb-row-layout-id460_614693-ca .kt-row-column-wrap {
+  background: #FFFFFF !important;
+  border: 1px solid #D8D3CC !important;
+  border-width: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+}
+.kb-row-layout-id460_614693-ca .kadence-column460_1ccc62-ab,
+.kb-row-layout-id460_614693-ca .kadence-column460_1ccc62-ab .kt-inside-inner-col {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ---- Each event row: white bg, border-bottom divider, hover tint ---- */
+.kb-row-layout-id460_f58775-ed .kt-row-column-wrap,
+.kb-row-layout-id460_8b3f99-a8 .kt-row-column-wrap,
+.kb-row-layout-id460_b64e59-07 .kt-row-column-wrap {
+  display: grid !important;
+  grid-template-columns: 110px 1fr auto !important;
+  gap: 28px !important;
+  padding: 12px 28px !important;
+  align-items: center !important;
+  border-bottom: 1px solid #D8D3CC !important;
+  border-bottom-width: 1px !important;
+  transition: background 0.15s ease !important;
+}
+.kb-row-layout-id460_b64e59-07 .kt-row-column-wrap {
+  border-bottom: none !important; /* last row, no divider */
+}
+.kb-row-layout-id460_f58775-ed:hover .kt-row-column-wrap,
+.kb-row-layout-id460_8b3f99-a8:hover .kt-row-column-wrap,
+.kb-row-layout-id460_b64e59-07:hover .kt-row-column-wrap {
+  background: #F0F4EF !important;
+}
+
+/* ---- Date column: left border + stacked day/month ---- */
+.kadence-column460_ec3d2f-df,
+.kadence-column460_a5e20d-da,
+.kadence-column460_fcfe9f-fb {
+  border-left: 3px solid #4FA3A5 !important;
+  padding: 2px 0 2px 14px !important;
+}
+/* Event 2 uses Golden Sedge instead of Fresh Teal */
+.kadence-column460_a5e20d-da {
+  border-left-color: #C4A35A !important;
+}
+
+/* Day number */
+.kt-adv-heading460_2f9b98-b0,
+.kt-adv-heading460_f2b325-21,
+.kt-adv-heading460_077477-1d {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+  color: #0E4C59 !important;
+  margin: 0 !important;
+}
+
+/* Month/day-of-week label */
+.kt-adv-heading460_588bdb-22,
+.kt-adv-heading460_b2ee24-e3,
+.kt-adv-heading460_4ec3ac-19 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #4FA3A5 !important;
+  margin: 6px 0 0 0 !important;
+}
+/* Event 2's month label uses Dark Ochre instead of Fresh Teal */
+.kt-adv-heading460_b2ee24-e3 {
+  color: #3D2E0A !important;
+}
+
+/* ---- Event name ---- */
+.kt-adv-heading460_fe0a91-0c,
+.kt-adv-heading460_aae05e-ea,
+.kt-adv-heading460_fac33f-87 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 17px !important;
+  color: #243033 !important;
+  margin: 0 0 4px 0 !important;
+}
+
+/* ---- Meta row (icon / location / time / note) ----
+   FIX: this specific nested row was carrying an unwanted border, confirmed
+   visible in screenshot as a rectangle around the location/time/note text.
+   Kill it on both the outer Row Layout wrap and its column-wrap.
+   FIX: raised closer to the title — zero top margin/padding, since Kadence's
+   nested Row Layout was adding its own default top spacing here. */
+.kb-row-layout-id460_795eb1-2b,
+.kb-row-layout-id460_1a28e3-e7,
+.kb-row-layout-id460_c6c303-b1 {
+  border: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.kb-row-layout-id460_795eb1-2b .kt-row-column-wrap,
+.kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap,
+.kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+  border: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+.kb-row-layout-id460_795eb1-2b .wp-block-kadence-column,
+.kb-row-layout-id460_1a28e3-e7 .wp-block-kadence-column,
+.kb-row-layout-id460_c6c303-b1 .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+}
+
+/* Map pin icon: 14px, slate color */
+.kt-svg-icons460_b06615-36 .kb-svg-icon-wrap,
+.kt-svg-icons460_328220-1b .kb-svg-icon-wrap,
+.kt-svg-icons460_438eb2-3f .kb-svg-icon-wrap {
+  color: #5F6B70 !important;
+}
+.kt-svg-icons460_b06615-36 svg,
+.kt-svg-icons460_328220-1b svg,
+.kt-svg-icons460_438eb2-3f svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Location / time / note text — all share the same style */
+.kt-adv-heading460_1238d8-f0, .kt-adv-heading460_a8cbfa-86, .kt-adv-heading460_2de71a-e0,
+.kt-adv-heading460_6fa7b2-f4, .kt-adv-heading460_3d56d7-2a, .kt-adv-heading460_c03c61-06,
+.kt-adv-heading460_2bd757-92, .kt-adv-heading460_5b0e7a-db, .kt-adv-heading460_94b88a-db {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 13px !important;
+  color: #5F6B70 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* ---- Action link (Register free → / Details → / Register →) ---- */
+.kt-adv-heading460_6a73d7-41,
+.kt-adv-heading460_682cc2-28,
+.kt-adv-heading460_3d7210-c8 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #1F6F8B !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+.kt-adv-heading460_6a73d7-41:hover,
+.kt-adv-heading460_682cc2-28:hover,
+.kt-adv-heading460_3d7210-c8:hover {
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 640px) {
+  /* FIX: more top spacing so this doesn't sit almost under the H2 */
+  .kt-adv-heading460_ab573d-a3 {
+    margin-top: 16px !important;
+    align-self: flex-start !important;
+  }
+  .kb-row-layout-id460_f58775-ed .kt-row-column-wrap,
+  .kb-row-layout-id460_8b3f99-a8 .kt-row-column-wrap,
+  .kb-row-layout-id460_b64e59-07 .kt-row-column-wrap {
+    grid-template-columns: 90px 1fr !important;
+    gap: 14px !important;
+    padding: 18px !important;
+  }
+  .kadence-column460_6df70c-9b,
+  .kadence-column460_61be77-13,
+  .kadence-column460_e8b349-4c {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+  }
+  /* FIX: replace organic flex-wrap (which let icon split unpredictably from
+     its text, and shifted at different widths) with an explicit grid.
+     Icon+location are FORCED onto one line together always; time and note
+     each get their own full-width line below, deterministic at every width. */
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap,
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap,
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap {
+    display: grid !important;
+    grid-template-columns: 16px 1fr !important;
+    column-gap: 8px !important;
+    row-gap: 4px !important;
+    align-items: start !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(1),
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(1),
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(1) .kt-inside-inner-col,
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(1) .kt-inside-inner-col,
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(1) .kt-inside-inner-col {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(2),
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(2),
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(3),
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(3),
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(3) {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(3) .kt-inside-inner-col,
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(3) .kt-inside-inner-col,
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(3) .kt-inside-inner-col {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(4),
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(4),
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(4) {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    min-width: 0 !important;
+    overflow-wrap: break-word !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap > *:nth-child(4) .kt-inside-inner-col,
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap > *:nth-child(4) .kt-inside-inner-col,
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap > *:nth-child(4) .kt-inside-inner-col {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  /* FIX: grid-column must be set on the actual grid ITEM (the column div,
+     direct child of the grid container), not on the heading text nested
+     inside it — that's why the red test confirmed the CSS was landing, but
+     position never changed, the property was on the wrong element entirely. */
+  .kadence-column460_a5538d-ea,
+  .kadence-column460_e143d4-ef,
+  .kadence-column460_189195-46 {
+    grid-column: 2 !important;
+    margin-top: 4px !important;
+  }
+  .kt-adv-heading460_6a73d7-41,
+  .kt-adv-heading460_682cc2-28,
+  .kt-adv-heading460_3d7210-c8 {
+    padding-left: 0 !important;
+    margin: 0 !important;
+  }
+  .kb-row-layout-id460_795eb1-2b .kt-row-column-wrap,
+  .kb-row-layout-id460_1a28e3-e7 .kt-row-column-wrap,
+  .kb-row-layout-id460_c6c303-b1 .kt-row-column-wrap {
+    gap: 8px !important;
+  }
+  /* FIX: mobile overflow — these were nowrap at all sizes, so long text like
+     "Tools & morning tea provided" couldn't wrap and spilled past the
+     container edge on narrow screens. Allow wrapping here only. */
+  .kt-adv-heading460_1238d8-f0, .kt-adv-heading460_a8cbfa-86, .kt-adv-heading460_2de71a-e0,
+  .kt-adv-heading460_6fa7b2-f4, .kt-adv-heading460_3d56d7-2a, .kt-adv-heading460_c03c61-06,
+  .kt-adv-heading460_2bd757-92, .kt-adv-heading460_5b0e7a-db, .kt-adv-heading460_94b88a-db {
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+}
