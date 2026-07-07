@@ -1,0 +1,267 @@
+/* ==========================================================================
+   MEMBERSHIP CTA — "Support Perry Lakes — become a member."
+   ========================================================================== */
+
+/* FIX: gradient wasn't rendering at all — this is the same known issue we
+   hit with the Hero's zoom effect: Kadence blocks ::before content on Row
+   Layout blocks entirely, so no pseudo-element approach can ever work here.
+   Fixed by baking the gradient directly into the row's own real background
+   property (layered on top of the charcoal color), no pseudo-element
+   involved at all. */
+#membership-cta-section {
+  padding-top: 36px !important;
+  padding-bottom: 36px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(ellipse 90% 80% at 85% 50%, rgba(79,163,165,0.16), transparent 70%),
+    radial-gradient(ellipse 80% 70% at 10% 90%, rgba(196,163,90,0.11), transparent 65%),
+    #243033 !important;
+}
+
+/* Inner 2-column layout: left content / right CTA */
+.kb-row-layout-id460_b72d63-57 .kt-row-column-wrap {
+  display: grid !important;
+  grid-template-columns: 1.4fr auto !important;
+  gap: 64px !important;
+  align-items: center !important;
+}
+
+/* ---- Left column text ---- */
+.kt-adv-heading460_a7964e-32 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #4FA3A5 !important;
+  margin: 0 0 14px 0 !important;
+}
+.kt-adv-heading460_70c95d-42 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(30px, 3.4vw, 44px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+  color: #FFFFFF !important;
+  max-width: 620px !important;
+  margin: 0 0 14px 0 !important;
+}
+.kt-adv-heading460_941d06-74 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  color: rgba(255,255,255,0.82) !important;
+  max-width: 580px !important;
+  margin: 0 0 24px 0 !important;
+}
+/* FIX: gap to pills reduced by 20px (26px → 6px) */
+.kt-adv-heading460_65178d-2e {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 14px !important;
+  letter-spacing: 0.02em !important;
+  color: rgba(255,255,255,0.7) !important;
+  margin: 0 0 6px 0 !important;
+}
+
+/* ---- Pills row ---- */
+.kb-row-layout-id460_e51bcf-2a .kt-row-column-wrap {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  align-items: flex-start !important;
+}
+.kb-row-layout-id460_e51bcf-2a .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* FIX: pill height increased slightly (padding 8px→10px vertical, 14px→16px
+   horizontal) per feedback */
+.kadence-column460_1417d4-46,
+.kadence-column460_10b15e-67,
+.kadence-column460_26024c-9b,
+.kadence-column460_1314ad-74 {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 10px 16px !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.04) !important;
+  width: fit-content !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+.kadence-column460_1417d4-46 > .kt-inside-inner-col,
+.kadence-column460_10b15e-67 > .kt-inside-inner-col,
+.kadence-column460_26024c-9b > .kt-inside-inner-col,
+.kadence-column460_1314ad-74 > .kt-inside-inner-col {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+.kb-row-layout-id460_7bb573-69,
+.kb-row-layout-id460_3040ca-3f,
+.kb-row-layout-id460_4d895d-62,
+.kb-row-layout-id460_678a81-34 {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+.kb-row-layout-id460_7bb573-69 .kt-row-column-wrap,
+.kb-row-layout-id460_3040ca-3f .kt-row-column-wrap,
+.kb-row-layout-id460_4d895d-62 .kt-row-column-wrap,
+.kb-row-layout-id460_678a81-34 .kt-row-column-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+.kadence-column460_4f52be-4e, .kadence-column460_809526-d5,
+.kadence-column460_59bbcc-26, .kadence-column460_c87a2e-f6,
+.kadence-column460_937c88-88, .kadence-column460_a45cf9-f5,
+.kadence-column460_69eb2e-b8, .kadence-column460_3d05a8-ad,
+.kadence-column460_4f52be-4e > .kt-inside-inner-col, .kadence-column460_809526-d5 > .kt-inside-inner-col,
+.kadence-column460_59bbcc-26 > .kt-inside-inner-col, .kadence-column460_c87a2e-f6 > .kt-inside-inner-col,
+.kadence-column460_937c88-88 > .kt-inside-inner-col, .kadence-column460_a45cf9-f5 > .kt-inside-inner-col,
+.kadence-column460_69eb2e-b8 > .kt-inside-inner-col, .kadence-column460_3d05a8-ad > .kt-inside-inner-col {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Checkmark icons: 14px, fresh-teal */
+.kt-svg-icons460_94d1c8-ff .kb-svg-icon-wrap,
+.kt-svg-icons460_cc9dee-16 .kb-svg-icon-wrap,
+.kt-svg-icons460_d09d98-f3 .kb-svg-icon-wrap,
+.kt-svg-icons460_54f549-60 .kb-svg-icon-wrap {
+  color: #4FA3A5 !important;
+}
+.kt-svg-icons460_94d1c8-ff svg,
+.kt-svg-icons460_cc9dee-16 svg,
+.kt-svg-icons460_d09d98-f3 svg,
+.kt-svg-icons460_54f549-60 svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+
+/* Pill labels */
+.kt-adv-heading460_ba76fd-a5,
+.kt-adv-heading460_57000f-e2,
+.kt-adv-heading460_f32721-41,
+.kt-adv-heading460_02e980-5a {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.92) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+/* ---- Right column: button + note, right-aligned, stacked ---- */
+.kadence-column460_b90a61-10 .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 0 !important;
+}
+.kb-buttons-wrap460_8f72af-da,
+.kb-btns460_8f72af-da {
+  margin: 0 0 6px 0 !important;
+  padding: 0 !important;
+}
+
+/* FIX: bolder text — escalated with repeated selector for higher specificity
+   plus targeting every possible nested text-carrying element, since a
+   single-level override wasn't visually bold enough. Bottom padding also
+   increased by 5px (22px → 27px) per feedback, other sides unchanged. */
+.kb-btn460_524394-e0.kb-btn460_524394-e0 {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #C4A35A !important;
+  color: #3D2E0A !important;
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 18px !important;
+  letter-spacing: 0.01em !important;
+  padding: 22px 34px 27px 34px !important;
+  border: 1px solid #C4A35A !important;
+  border-radius: 0 !important;
+  min-width: 240px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.15s ease !important;
+}
+.kb-btn460_524394-e0.kb-btn460_524394-e0 .kt-btn-inner-text,
+.kb-btn460_524394-e0.kb-btn460_524394-e0 span {
+  font-weight: 900 !important;
+  color: #3D2E0A !important;
+}
+.kb-btn460_524394-e0:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 18px 36px -16px rgba(196,163,90,0.55) !important;
+  background: #D7B872 !important;
+}
+.kt-adv-heading460_aff0e5-65 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 12px !important;
+  letter-spacing: 0.04em !important;
+  color: rgba(255,255,255,0.55) !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1020px) {
+  .kb-row-layout-id460_b72d63-57 .kt-row-column-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 44px !important;
+  }
+  .kadence-column460_b90a61-10 .kt-inside-inner-col {
+    align-items: flex-start !important;
+  }
+  /* FIX: pills had too much space and weren't aligned together — reset
+     any leftover column-grid width/spacing behavior explicitly here. */
+  .kb-row-layout-id460_e51bcf-2a .kt-row-column-wrap {
+    gap: 8px !important;
+    row-gap: 8px !important;
+  }
+  .kadence-column460_1417d4-46,
+  .kadence-column460_10b15e-67,
+  .kadence-column460_26024c-9b,
+  .kadence-column460_1314ad-74 {
+    margin: 0 !important;
+  }
+}
+@media (max-width: 640px) {
+  .kb-row-layout-id460_e51bcf-2a .kt-row-column-wrap {
+    gap: 6px !important;
+    row-gap: 6px !important;
+  }
+  .kadence-column460_1417d4-46,
+  .kadence-column460_10b15e-67,
+  .kadence-column460_26024c-9b,
+  .kadence-column460_1314ad-74 {
+    padding: 8px 12px !important;
+  }
+  /* Button was too large on mobile — reduced font size, padding, min-width */
+  .kb-btn460_524394-e0.kb-btn460_524394-e0 {
+    font-size: 15px !important;
+    padding: 16px 24px 20px 24px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+}
