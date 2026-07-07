@@ -1,0 +1,278 @@
+/* ==========================================================================
+   LATEST NEWS — "What's happening at the lakes."
+   ========================================================================== */
+
+#new-section {
+  background: #F0F4EF !important;
+  padding-top: 22px !important;
+  padding-bottom: 36px !important;
+}
+#new-section .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ---- Header row: eyebrow + H2 + View all button ----
+   FIX: 20px left/right padding to match the rest of the section. */
+.kadence-column460_c4dabe-cd > .kt-inside-inner-col {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+/* FIX: zero padding on every intermediate wrapping level between the header
+   (which correctly gets the single 20px source above) and the actual card
+   grid — these were stacking additional unwanted padding on top of it. */
+.kb-row-layout-id460_532a71-c7,
+.kb-row-layout-id460_532a71-c7 .kt-row-column-wrap,
+.kadence-column460_37cab7-17,
+.kadence-column460_37cab7-17 .kt-inside-inner-col,
+.kb-row-layout-id460_9c9f48-87,
+.kb-row-layout-id460_9c9f48-87 .kt-row-column-wrap {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.kt-adv-heading460_9e1b56-05 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: #0E4C59 !important;
+  margin: 0 0 6px 0 !important;
+}
+.kt-adv-heading460_0bc3dc-b1 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(30px, 3.4vw, 44px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+  color: #0E4C59 !important;
+  margin: 0 !important;
+}
+
+/* "View all →" — desktop: pulled up alongside H2 exactly as prototype.
+   FIX: bottom margin reduced by 30px (48px → 18px) to close the gap
+   before the cards below, per feedback. Desktop top-alignment (-40px)
+   is untouched. */
+.kt-adv-heading460_c7626b-73 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #0E4C59 !important;
+  border: 1.5px solid #0E4C59 !important;
+  border-radius: 4px !important;
+  padding: 9px 16px !important;
+  margin: -40px 0 18px 0 !important;
+  align-self: flex-end !important;
+  display: inline-block !important;
+  width: fit-content !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  transition: background 0.15s ease, color 0.15s ease !important;
+}
+.kt-adv-heading460_c7626b-73:hover {
+  background: #0E4C59 !important;
+  color: #FFFFFF !important;
+}
+
+/* ---- 3-card grid: first card wider (1.4fr), others equal ---- */
+.kb-row-layout-id460_9c9f48-87 .kt-row-column-wrap {
+  display: grid !important;
+  grid-template-columns: 1.4fr 1fr 1fr !important;
+  gap: 28px !important;
+  background: transparent !important;
+}
+.kb-row-layout-id460_9c9f48-87 {
+  background: transparent !important;
+}
+
+/* ---- Each card ---- */
+.kadence-column460_75ef5d-2a,
+.kadence-column460_28a0ee-c5,
+.kadence-column460_47569c-cc {
+  background: #FFFFFF !important;
+  border: 1px solid #D8D3CC !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  margin-top: -20px !important;
+}
+.kadence-column460_75ef5d-2a:hover,
+.kadence-column460_28a0ee-c5:hover,
+.kadence-column460_47569c-cc:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 40px -24px rgba(14,76,89,0.25) !important;
+}
+.kadence-column460_75ef5d-2a .kt-inside-inner-col,
+.kadence-column460_28a0ee-c5 .kt-inside-inner-col,
+.kadence-column460_47569c-cc .kt-inside-inner-col {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+/* ---- Photo: cover, correct aspect ratio, relative for tag overlay ---- */
+.kb-image460_36337b-f3,
+.kb-image460_f2e02e-09,
+.kb-image460_88e0b2-33 {
+  position: relative !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 10 !important;
+  overflow: hidden !important;
+}
+.kb-image460_36337b-f3 {
+  aspect-ratio: 4 / 3.4 !important; /* first card only, per prototype */
+}
+.kb-image460_36337b-f3 img,
+.kb-image460_f2e02e-09 img,
+.kb-image460_88e0b2-33 img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* ---- Category tag: absolute overlay, exact top-left of photo ----
+   FIX: zeroed margin/padding at every nesting level (row, column, inner-col)
+   so the tag sits flush against the photo's actual top-left corner. */
+.kb-row-layout-id460_c6706e-44,
+.kb-row-layout-id460_9c09d0-e6,
+.kb-row-layout-id460_638b49-05 {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+.kb-row-layout-id460_c6706e-44 .kt-row-column-wrap,
+.kb-row-layout-id460_9c09d0-e6 .kt-row-column-wrap,
+.kb-row-layout-id460_638b49-05 .kt-row-column-wrap {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.kadence-column460_da017c-02,
+.kadence-column460_517ad9-4a,
+.kadence-column460_1c43de-f2,
+.kadence-column460_da017c-02 .kt-inside-inner-col,
+.kadence-column460_517ad9-4a .kt-inside-inner-col,
+.kadence-column460_1c43de-f2 .kt-inside-inner-col {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: fit-content !important;
+}
+.kb-buttons-wrap460_541a1f-e6,
+.kb-btns460_541a1f-e6,
+.kb-btns460_048b68-3e,
+.kb-btns460_e7da11-71 {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: fit-content !important;
+  display: inline-block !important;
+}
+
+/* Category tag: white text, no underline, single line, correct size */
+.kb-btn460_2d56b6-76,
+.kb-btn460_af1b15-7e,
+.kb-btn460_9cee47-97 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  padding: 7px 14px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  width: fit-content !important;
+}
+/* Target the nested <a> directly — this is why color/underline weren't
+   landing, the actual visible text is the anchor inside the button span,
+   which carries its own default link styling that was overriding ours. */
+.kb-btn460_2d56b6-76 a,
+.kb-btn460_af1b15-7e a,
+.kb-btn460_9cee47-97 a,
+.kb-btn460_2d56b6-76 .kt-btn-inner-text,
+.kb-btn460_af1b15-7e .kt-btn-inner-text,
+.kb-btn460_9cee47-97 .kt-btn-inner-text,
+.kb-btn460_2d56b6-76 .kt-btn-inner-text a,
+.kb-btn460_af1b15-7e .kt-btn-inner-text a,
+.kb-btn460_9cee47-97 .kt-btn-inner-text a {
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+/* Category colors: Water=fresh-teal, Community=sedge-rust, Wildlife=reed-green */
+.kb-btn460_2d56b6-76 { background: #4FA3A5 !important; }
+.kb-btn460_af1b15-7e { background: #C4734A !important; }
+.kb-btn460_9cee47-97 { background: #6B8F71 !important; }
+
+/* ---- Card body ----
+   FIX: meta line uses wider letter-spacing to open up breathing room
+   around the "·" separator, matching the prototype's visual spacing.
+   (If this still isn't enough, the most reliable fix is adding an extra
+   literal space on each side of "·" directly in the text content itself,
+   since it's plain text rather than separately styled spans.) */
+.kt-adv-heading460_085856-52, .kt-adv-heading460_b73223-00, .kt-adv-heading460_4acdd9-0e {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 13px !important;
+  letter-spacing: 0.06em !important;
+  color: #5F6B70 !important;
+  margin: 22px 24px 10px 24px !important;
+}
+.kt-adv-heading460_43f0c8-c6, .kt-adv-heading460_ecb1ce-38, .kt-adv-heading460_880080-a0 {
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.01em !important;
+  color: #0E4C59 !important;
+  margin: 0 24px 10px 24px !important;
+}
+.kt-adv-heading460_8e74e7-ef, .kt-adv-heading460_17365e-10, .kt-adv-heading460_734a1f-7f {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  color: #5F6B70 !important;
+  margin: 0 24px 16px 24px !important;
+}
+.kt-adv-heading460_08ad02-bc, .kt-adv-heading460_8779d4-0c, .kt-adv-heading460_40e1d3-b9 {
+  font-family: 'Lato', system-ui, -apple-system, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #1F6F8B !important;
+  margin: auto 24px 26px 24px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1020px) {
+  .kb-row-layout-id460_9c9f48-87 .kt-row-column-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .kb-image460_36337b-f3 {
+    aspect-ratio: 16 / 10 !important;
+  }
+}
+@media (max-width: 640px) {
+  /* FIX: desktop's -40px pull-up was carrying over to mobile, making the
+     link sit almost on top of the H2. Reset to a normal positive value,
+     matching the same treatment as Events Strip's "See all events" link.
+     Bottom margin also reduced further specifically for mobile. */
+  .kt-adv-heading460_c7626b-73 {
+    margin-top: 16px !important;
+    margin-bottom: 8px !important;
+    align-self: flex-start !important;
+  }
+}
