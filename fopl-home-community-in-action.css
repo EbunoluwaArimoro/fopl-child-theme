@@ -9,8 +9,8 @@
 /* ---- 0. Section padding: 96px prototype baseline + 40px = 136px top/bottom,
    20px left/right exactly ---- */
 #community-in-action-section{
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+  padding-top: 30px !important;
+  padding-bottom: 20px !important;
   padding-left: 20px !important;
   padding-right: 20px !important;
 }
@@ -173,7 +173,7 @@
   background: #fff !important;
   border: 1px solid var(--ci-stone);
   padding: 26px 30px 16px !important; 
-  height: 93% !important; /* User's specific fix for perfect alignment */
+  height: 93% !important; /* User's specific fix for desktop alignment */
   display: flex !important;
   flex-direction: column !important;
 }
@@ -352,6 +352,11 @@
     grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
+  
+  /* Reset height to 100% on tablet */
+  .kadence-column460_013c77-c5 > .kt-inside-inner-col{
+    height: 100% !important; 
+  }
 }
 
 /* ============================================
@@ -359,8 +364,8 @@
    ============================================ */
 @media (max-width: 640px){
   #community-in-action-section{
-    padding-top: 64px !important;
-    padding-bottom: 64px !important;
+    padding-top: 34px !important; 
+    padding-bottom: 34px !important; 
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -372,16 +377,30 @@
   }
   .kt-adv-heading460_80f72f-d3{
     align-self: flex-start !important;
-    margin: 8px 0 24px 0 !important;
+    margin: 8px 0 4px 0 !important; /* Reduced bottom margin to pull pictures up by 20px */
   }
   .kb-row-layout-id460_8d67bb-b5{
     margin-top: 0 !important;
   }
 
+  /* Compressing main stacking gaps for mobile */
+  .kb-row-layout-id460_4d56af-de > .kt-row-column-wrap {
+    gap: 12px !important; /* Reduced from 32px to close the gap before the white panel */
+  }
   .kadence-column460_708068-8f > .kt-inside-inner-col{ gap: 12px !important; }
   .kb-row-layout-id460_4528d9-6d > .kt-row-column-wrap,
   .kb-row-layout-id460_6dccee-dc > .kt-row-column-wrap{ gap: 12px !important; }
-  .kadence-column460_013c77-c5 > .kt-inside-inner-col{ padding: 24px !important; }
+  
+  /* Inside the white follow panel on mobile */
+  .kadence-column460_013c77-c5 > .kt-inside-inner-col{ 
+    padding: 20px !important; 
+    height: 100% !important; /* Reset height for mobile */
+  }
+  
+  /* Re-applied negative margin specifically to eat Kadence's hidden mobile padding */
+  .wp-block-kadence-column.kadence-column460_b1b6f0-bb {
+    margin-top: -20px !important; 
+  }
   
   .kb-row-layout-id460_2d6dbe-18 > .kt-row-column-wrap,
   .kb-row-layout-id460_119ed4-2b > .kt-row-column-wrap,
