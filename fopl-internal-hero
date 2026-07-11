@@ -1,0 +1,131 @@
+/* ==========================================================================
+   INTERIOR HERO — FINAL ADJUSTMENTS
+   ========================================================================== */
+
+/* 1. Base padding and height overrides (drastically reduced bottom spacing) */
+#hero-section {
+  padding-bottom: 40px !important; 
+  margin-top: -40px !important; 
+  position: relative !important;
+}
+
+/* OVERRIDE KADENCE MIN-HEIGHT ON MOBILE */
+@media (max-width: 767px) {
+  #hero-section {
+    min-height: auto !important; /* Turns off Kadence's forced 560px height */
+    padding-top: 40px !important;
+    padding-bottom: 40px !important; 
+    margin: 0 !important;
+  }
+}
+
+/* 2. Kill Kadence's forced flex/grid gap */
+#hero-section .kt-row-column-wrap {
+  gap: 0 !important;
+  position: static !important;
+}
+
+/* Strip default block margins */
+.kadence-column1040_ef6f79-7b,
+.kadence-column1040_e35329-e6 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+/* 3. Typography matched to prototype */
+.kt-adv-heading1040_92bcee-3e { /* H1 */
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  font-size: clamp(42px, 5vw, 72px) !important;
+  text-shadow: 0 2px 22px rgba(8,30,35,.38) !important;
+}
+
+.kt-adv-heading1040_b23417-3d { /* Subtitle */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-family: var(--display) !important;
+  font-style: italic !important;
+  font-size: clamp(18px, 1.8vw, 23px) !important;
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+/* 4. PHOTO CREDIT: Fix cut-off by pinning strictly to the inside container edge */
+.kadence-column1040_0a987d-4b {
+  position: absolute !important;
+  right: 120px !important; /* Strictly 20px from edge, removes negative math */
+  bottom: 60px !important; /* Safely above the breadcrumb */
+  z-index: 5;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.kt-adv-heading1040_8894ed-5d { /* Photo Credit Text */
+  font-size: 12px !important;
+  color: rgba(240, 244, 239, 0.7) !important;
+  letter-spacing: 0.03em !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .kadence-column1040_0a987d-4b {
+    bottom: 50px !important;
+  }
+}
+
+/* 5. BREADCRUMB ROW: Full width, bottom edge, dark tint */
+.kadence-column1040_22c52c-25 {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  background: rgba(8, 30, 35, 0.45) !important; /* Dark tint */
+  z-index: 10;
+  margin: 0 !important;
+  padding: 12px 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* 6. BREADCRUMB TEXT & LINKS */
+/* Target the overall text container for "The Reserve" (Full White / Constant) */
+.kt-adv-heading1040_d7f0c0-5c code {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 1000px !important; /* Matches your row's max-width setting */
+  padding: 0 20px !important;
+  text-align: left;
+  font-family: var(--sans) !important;
+  font-size: 15px !important; /* Increased to 17px for desktop */
+  font-weight: 700 !important;
+  color: #F0F4EF !important; /* Full white for "The Reserve" */
+  background: transparent !important;
+}
+
+/* Target the clickable "Home" link specifically */
+.kt-adv-heading1040_d7f0c0-5c a {
+  color: rgba(240, 244, 239, 0.6) !important; /* Muted white */
+  text-decoration: none !important;
+  font-weight: 400 !important;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+/* Hover effect for "Home" */
+.kt-adv-heading1040_d7f0c0-5c a:hover {
+  color: #FFFFFF !important; /* Full white */
+  text-decoration: underline !important;
+}
+
+/* Responsive font sizing for the breadcrumb */
+@media (max-width: 1024px) {
+  .kt-adv-heading1040_d7f0c0-5c code {
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .kt-adv-heading1040_d7f0c0-5c code {
+    font-size: 14px !important;
+  }
+}
