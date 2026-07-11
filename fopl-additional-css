@@ -1,0 +1,581 @@
+/* =========================================================================
+   FoPL MASTER STYLESHEET (CLEANED)
+   Paste this ONCE into Appearance > Customize > Additional CSS, replacing
+   everything currently there.
+   IMPORTANT: the @import on line 1 MUST stay the very first line. Browsers
+   ignore @import if any rule comes before it.
+   After pasting, do the two Kadence UI steps (they can't be pure CSS):
+     1. Customize > Colors  -> load the palette hexes into the slots.
+     2. Customize > Typography -> set Base = Lato, Headings = Merriweather.
+
+   LATEST PASS (block-19 hash-proofing):
+   - Swapping the four "Through the lens" photos made Kadence regenerate
+     every hashed class inside #block-19, which detached the lens/NRM CSS
+     (the same silent-failure trap as before). This section is now anchored
+     to #block-19 + structural selectors only (no .kb-image.../.kb-row-layout-id...
+     hashes), so future image swaps will not break it. Also fixed two invalid
+     media queries from the last hand-edit (a bare @media with no selector
+     inside, and a doubled "@media ... @media ..."). Gap values kept at
+     10px desktop / 12px tablet / 8px mobile; NRM logo margins kept as tuned.
+
+   CHANGELOG (earlier pass):
+   - Removed all rules scoped to #block-14 (the old lens-strip widget).
+     Your own "CLEANUP FOR RESTRUCTURED LAYOUT" comment says the lens
+     photos + NRM lockup moved to #block-19. #block-14 rules were dead
+     weight left over from before that move.
+   - Removed the old #block-17 "copyright + Supported by, flex,
+     space-between" treatment. Your later note says #block-17 is now just
+     the copyright line (Supported-by text moved to the NRM lockup in
+     #block-19), so the old flex/justify-content rules and the
+     .kt-adv-headinge9ee72-f5 / .kt-adv-headingd235bb-74 selectors they
+     depended on were dead.
+   - Through the Lens + NRM (#block-19): REWRITTEN against the real live DOM.
+     The earlier selectors (.kb-row-layout-id0a4e92-fc, .kb-image2a0423-b7,
+     .kt-adv-heading4ecaf3-88) did not exist in this build, so none of that
+     CSS applied and the lens photos rendered raw. Now targets the actual
+     classes (.kb-row-layout-id454cfd-a4 for the grid, .kb-image983416-94 for
+     the NRM logo, .kt-adv-heading9f14f6-a3 for the funder text). Lens photos:
+     uniform 3:2, 6px radius, 20px gap, 2x2 on mobile. NRM: text full width on
+     mobile, unchanged on desktop; 10px tighter text-to-logo gap on desktop;
+     10px more space under the logo on mobile.
+   - Removed a duplicate .hero__sub rule (two full rule blocks for the
+     same selector; the more specific `.hero .hero__sub` rule already
+     "!important"-overrides every property that mattered).
+   - Kept, but merged and flagged, two pairs of rules that target what look
+     like the same footer element under two different Kadence-generated
+     class names (kb-image7539dd-94 vs kb-image90ec3e-95 for the footer
+     logo; kt-adv-heading276983-ee vs kt-adv-heading0b76d0-01 for the
+     Contact link). I can't see your live DOM, so I didn't guess which
+     one is stale. Both are harmless to keep (a rule matching no element
+     just does nothing), but worth a 30-second check in the editor to
+     delete whichever one no longer exists.
+   ========================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700;900&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+
+/* -------------------------------------------------------------------------
+   1. DESIGN TOKENS  (canonical set from index.html :root)
+   ------------------------------------------------------------------------- */
+:root{
+  --deep-teal:#0E4C59;
+  --fresh-teal:#4FA3A5;
+  --golden-sedge:#C4A35A;
+  --reed-white:#F0F4EF;
+  --charcoal:#243033;
+  --slate:#5F6B70;
+  --stone:#D8D3CC;
+  --dark-ochre:#3D2E0A;
+  --lake-blue:#1F6F8B;
+  --reed-green:#6B8F71;
+  --sedge-rust:#C4734A;
+  --waterline:#7A8C96;
+  --green-15:#E9EFEA;
+  --rust-15:#F6E8E1;
+  --teal-15:#E4F0F0;
+  --gold-15:#F5EDDB;
+  --water-15:#EAEDEF;
+  --display:"Merriweather", Georgia, serif;
+  --sans:"Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap:1240px;
+  --gutter:clamp(20px, 4vw, 40px);
+}
+
+/* -------------------------------------------------------------------------
+   2. BASE
+   ------------------------------------------------------------------------- */
+body{
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  color:var(--charcoal);
+  background:var(--reed-white);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4{font-family:var(--display); font-weight:700; color:var(--deep-teal); margin:0; letter-spacing:-.01em}
+h1{font-size:clamp(40px, 5.6vw, 76px); line-height:1.05}
+h2{font-size:clamp(30px, 3.4vw, 44px); line-height:1.15}
+h3{font-family:var(--sans); font-weight:700; font-size:20px; line-height:1.3; color:var(--charcoal); letter-spacing:0}
+
+/* -------------------------------------------------------------------------
+   3. TEXT UTILITIES
+   ------------------------------------------------------------------------- */
+.eyebrow{font-family:var(--sans); font-weight:700; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--fresh-teal)}
+.eyebrow--dark{color:var(--deep-teal)}
+.eyebrow--slate{color:var(--slate)}
+.lead{font-size:19px; line-height:1.55; color:var(--charcoal)}
+.lead--slate{color:var(--slate); font-size:17px; max-width:620px}
+.caption{font-family:var(--display); font-style:italic; font-size:12px; color:var(--slate); letter-spacing:.03em; margin-top:10px}
+.caption--on-dark{color:rgba(240,244,239,.7)}
+.pull-quote{border-left:3px solid var(--fresh-teal); background:var(--teal-15); padding:1.1rem 1.5rem; margin:2rem 0; border-radius:0 3px 3px 0}
+.pull-quote p{font-family:var(--display); font-style:italic; font-size:1.1rem; line-height:1.65; color:var(--deep-teal); margin:0}
+.sci-name{font-family:var(--display); font-style:italic; font-weight:400; color:var(--slate)}
+.sci-name--sm{font-size:12.5px}
+.sci-name--lg{font-size:20px}
+.card-title{font-family:var(--display); font-weight:700; font-size:22px; line-height:1.25; color:var(--deep-teal); letter-spacing:-.01em}
+
+/* -------------------------------------------------------------------------
+   4. BUTTONS
+   ------------------------------------------------------------------------- */
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--sans); font-weight:700; font-size:15px;
+  padding:12px 22px; border-radius:4px; text-decoration:none;
+  border:2px solid transparent; cursor:pointer; line-height:1;
+  transition:background .18s, color .18s, border-color .18s, transform .08s;
+}
+.btn:active{transform:translateY(1px)}
+.btn--primary{background:var(--deep-teal); color:#fff; border-color:var(--deep-teal)}
+.btn--primary:hover{background:#0a3d48; border-color:#0a3d48}
+.btn--featured{background:var(--golden-sedge); color:var(--dark-ochre); border-color:var(--golden-sedge)}
+.btn--featured:hover{background:#b89349; border-color:#b89349}
+.btn--ghost{background:transparent; color:var(--deep-teal); border-color:var(--deep-teal)}
+.btn--ghost:hover{background:var(--deep-teal); color:#fff}
+.btn--ghost-light{background:transparent; color:#fff; border-color:rgba(255,255,255,.8)}
+.btn--ghost-light:hover{background:#fff; color:var(--deep-teal); border-color:#fff}
+.btn--primary.btn--on-dark{background:#fff; color:var(--deep-teal); border-color:#fff}
+.btn--primary.btn--on-dark:hover{background:var(--fresh-teal); color:#fff; border-color:var(--fresh-teal)}
+.btn--sm{padding:9px 16px; font-size:14px}
+
+/* -------------------------------------------------------------------------
+   5. SECTION HEADER
+   ------------------------------------------------------------------------- */
+.section__head{display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; margin-bottom:48px}
+.section__head .headgroup{max-width:720px}
+.section__head h2{margin-top:10px}
+.section__head p{margin:10px 0 0; color:var(--slate); max-width:620px; font-size:17px}
+
+/* -------------------------------------------------------------------------
+   6. CONTENT CARD + GRID
+   ------------------------------------------------------------------------- */
+.news__grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.card{background:#fff; border:1px solid var(--stone); display:flex; flex-direction:column; overflow:hidden; transition:transform .18s, box-shadow .18s}
+.card:hover{transform:translateY(-3px); box-shadow:0 18px 40px -24px rgba(14,76,89,.25)}
+.card__photo{aspect-ratio:16/10; background-size:cover; background-position:center; position:relative}
+.card__cat{position:absolute; top:0; left:0; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:900; padding:7px 14px; background:var(--cat, var(--deep-teal)); color:#fff}
+.card__body{padding:22px 24px 26px; flex:1; display:flex; flex-direction:column}
+.card p{color:var(--slate); font-size:15px; line-height:1.55; margin:0 0 16px}
+.card__more{margin-top:auto; color:var(--lake-blue); font-weight:700; font-size:14px}
+.card--water{--cat:var(--fresh-teal)}
+.card--habitat{--cat:var(--reed-green)}
+.card--community{--cat:var(--sedge-rust)}
+
+/* -------------------------------------------------------------------------
+   7. SPECIES CARD bits
+   ------------------------------------------------------------------------- */
+.card__top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:6px}
+.card__name{font-family:var(--sans); font-weight:700; font-size:16px; color:var(--charcoal)}
+.card__desc{font-size:13.5px; color:var(--slate); line-height:1.5}
+
+/* -------------------------------------------------------------------------
+   8. BADGES
+   ------------------------------------------------------------------------- */
+.badge{font-family:var(--sans); font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; padding:4px 9px; border-radius:3px; display:inline-block}
+.badge--birds{background:#DCE9EA; color:#0E4C59}
+.badge--reptiles{background:#E0E8E0; color:#3D5942}
+.badge--mammals{background:#F2E7CD; color:#5C4416}
+.badge--invertebrates{background:#E2E6E9; color:#3F4B52}
+.badge--amphibians{background:#D8E2EB; color:#163C52}
+.statusbadge--vulnerable{background:var(--sedge-rust); color:#fff}
+.statusbadge--endangered{background:#9E4A2C; color:#fff}
+.statusbadge--least-concern{background:var(--reed-green); color:#fff}
+
+/* -------------------------------------------------------------------------
+   9. STAT / METRIC BARS
+   ------------------------------------------------------------------------- */
+.stats__inner{display:grid; grid-template-columns:repeat(3,1fr); gap:40px}
+.stat__num{font-family:var(--display); font-weight:700; color:var(--deep-teal); font-size:clamp(30px,3.4vw,46px); line-height:1; letter-spacing:-.02em}
+.stat__num small{font-size:.5em; font-weight:700}
+.stat__label{font-size:13.5px; color:var(--slate); line-height:1.45; margin-top:12px}
+.metric{background:var(--deep-teal); color:var(--reed-white); border-radius:8px; padding:24px 22px}
+.metric__num{font-family:var(--display); font-weight:700; font-size:32px; line-height:1; letter-spacing:-.01em}
+.metric__num small{font-size:.45em; font-weight:700; opacity:.85}
+.metric__label{font-size:12.5px; line-height:1.45; color:rgba(240,244,239,.78); margin-top:10px}
+.metric--wide{grid-column:1 / -1; background:#fff; border:1px solid var(--stone); color:var(--charcoal)}
+.metric--wide .metric__num{color:var(--deep-teal)}
+.metric--wide .metric__label{color:var(--slate)}
+
+/* -------------------------------------------------------------------------
+   10. CTA BAND  (class on a Row: join)
+   ------------------------------------------------------------------------- */
+.join{background:linear-gradient(120deg,#0E4C59 0%,#0a3d48 100%)}
+.join__inner{position:relative; display:grid; grid-template-columns:1.4fr auto; gap:64px; align-items:center}
+.join .eyebrow{color:var(--fresh-teal); margin-bottom:14px}
+.join h2{color:#fff; margin-bottom:14px; max-width:620px; text-wrap:balance}
+.join p{color:rgba(255,255,255,.82); font-size:17px; line-height:1.55; margin:0 0 24px; max-width:580px}
+
+/* -------------------------------------------------------------------------
+   11. INTERIOR PAGE HERO (base tokens, kept as-is; not touched this pass.
+       These predate the fuller "INTERIOR HERO (global)" block further down
+       and may or may not still be in active use on any page, worth a
+       quick check next time you're auditing, but out of scope for this
+       Through the Lens cleanup so I left them alone.)
+   ------------------------------------------------------------------------- */
+.hero__overlay{background:linear-gradient(180deg,rgba(14,76,89,.50) 0%,rgba(14,76,89,.72) 100%)}
+.hero__inner{max-width:880px; padding:104px 0 64px}
+.hero h1{text-shadow:0 2px 22px rgba(8,30,35,.38)}
+.hero__credit{position:absolute; right:var(--gutter); bottom:58px; font-family:var(--display); font-style:italic; font-size:12px; color:rgba(240,244,239,.7); letter-spacing:.03em}
+
+/* =========================================================================
+   12. RESPONSIVE (base type scale / homepage components)
+   ========================================================================= */
+@media (max-width:1020px){
+  .section__head{grid-template-columns:1fr}
+  .news__grid{grid-template-columns:1fr; gap:20px}
+  .stats__inner{grid-template-columns:repeat(2,1fr); gap:28px}
+  .join__inner{grid-template-columns:1fr; gap:44px}
+  .hero__inner{padding:80px 0 56px}
+}
+@media (max-width:640px){
+  .lead{font-size:18px}
+  .pull-quote{padding:.9rem 1.1rem}
+  .stats__inner{grid-template-columns:1fr; gap:20px}
+  .hero__inner{padding:64px 0 48px}
+}
+
+/* ==========================================================================
+   FOPL HEADER/GLOBAL NAV FIXES
+   ========================================================================== */
+li.wp-block-kadence-navigation-link.current-menu-item > .kb-link-wrap > .kb-nav-link-content {
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   FOPL FOOTER
+   ========================================================================== */
+
+/* ---- Main 4-column grid (logo+social, Quick links, Contact, Stay connected) ---- */
+@media (max-width: 900px) {
+  #block-10 .kt-row-column-wrap { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@media (max-width: 560px) {
+  #block-10 .kt-row-column-wrap { grid-template-columns: minmax(0, 1fr) !important; }
+}
+#block-10 .kt-row-column-wrap { padding-top: 8px !important; padding-bottom: 8px !important; }
+@media (max-width: 767px) {
+  #block-10 .kt-row-column-wrap { row-gap: 22px !important; }
+}
+
+/* Kill default WP widget bottom margins on every footer block still in use
+   (removed #block-14 from this list, retired; see changelog) */
+#block-10, #block-12, #block-17, #block-18, #block-19 { margin-bottom: 0 !important; }
+#block-12 { margin-top: 24px !important; }
+@media (max-width: 767px) {
+  #block-12 { margin-top: 16px !important; }
+}
+
+/* Column heading spacing (Quick links / Contact / Stay connected labels) */
+#block-10 p[style*="letter-spacing:0.14em"] { margin-bottom: 8px !important; }
+
+/* Footer logo: hide on mobile (header already shows it).
+   Two Kadence-generated classes kept; check which one is live and delete the other. */
+@media (max-width: 767px) {
+  #block-10 .kb-image7539dd-94,
+  #block-10 .kb-image90ec3e-95 { display: none !important; }
+}
+
+/* ---- Quick Links nav ---- */
+.wp-block-kadence-navigation336-cpt-id {
+  --kb-nav-row-gap: 0px !important;
+  --kb-nav-top-link-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-border-left: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-hover-border-left: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-top: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-right: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-bottom: 0px solid transparent !important;
+  --kb-nav-top-link-active-border-left: 0px solid transparent !important;
+}
+.wp-block-kadence-navigation336-cpt-id .kb-link-wrap {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border: none !important;
+}
+.widget li:not(.kb-table-of-content-list li) { line-height: 1.1; }
+/* Nudge the Quick Links list back to optical left alignment with the column heading */
+ul.kb-navigation.menu.collapse-sub-nav-desktop-true.collapse-sub-nav-tablet-true.collapse-sub-nav-mobile-true {
+  margin-left: -6px;
+}
+/* Specific stuck override that wouldn't clear via the UI on the "What's on" link */
+.kb-nav-link-3roavwf6d > .kb-link-wrap.kb-link-wrap.kb-link-wrap.kb-link-wrap {
+  --kb-nav-link-hover-border-bottom: 1px solid var(--global-palette8, #F7FAFC) !important;
+}
+/* Real underline on hover, replacing the border-simulation trick */
+.kb-nav-link-snc4ynjoa .kb-nav-link-content,
+.kb-nav-link-3roavwf6d .kb-nav-link-content,
+.kb-nav-link-iq7ds9ltl .kb-nav-link-content,
+.kb-nav-link-pse9o5126 .kb-nav-link-content,
+.kb-nav-link-tls0m0oka .kb-nav-link-content,
+.kb-nav-link-1bla58sbf .kb-nav-link-content,
+.kb-nav-link-gib0bh56u .kb-nav-link-content,
+.kb-nav-link-n0cs1uf9m .kb-nav-link-content {
+  transition: color 0.15s ease !important;
+}
+.kb-nav-link-snc4ynjoa:hover .kb-nav-link-content,
+.kb-nav-link-3roavwf6d:hover .kb-nav-link-content,
+.kb-nav-link-iq7ds9ltl:hover .kb-nav-link-content,
+.kb-nav-link-pse9o5126:hover .kb-nav-link-content,
+.kb-nav-link-tls0m0oka:hover .kb-nav-link-content,
+.kb-nav-link-1bla58sbf:hover .kb-nav-link-content,
+.kb-nav-link-gib0bh56u:hover .kb-nav-link-content,
+.kb-nav-link-n0cs1uf9m:hover .kb-nav-link-content {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+/* ---- Contact column ----
+   Two Kadence-generated classes kept; check which one is live and delete the other. */
+.kt-adv-heading276983-ee a,
+.kt-adv-heading0b76d0-01 a {
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 400 !important;
+}
+.kt-adv-heading276983-ee a {
+  display: inline-block !important;
+  margin-bottom: 20px !important;
+}
+
+/* ---- Social icons (Stay Connected column) ---- */
+.kb-row-layout-id4fe3a5-60 .kt-row-column-wrap {
+  display: flex !important;
+  grid-template-columns: none !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.kb-row-layout-id4fe3a5-60 .wp-block-kadence-column {
+  flex: 0 0 auto !important;
+  width: auto !important;
+}
+.kb-row-layout-id4fe3a5-60 .kt-svg-icon-wrap {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* Duplicate social icons that used to sit under the logo column.
+   Social now lives under Stay Connected only */
+.kb-row-layout-id8dd0a5-4d { display: none !important; }
+
+/* ---- Newsletter signup (Gravity Forms) ---- */
+#gform_wrapper_1 {
+  margin-top: 4px !important;
+  --gf-color-primary: #C4A35A;
+  --gf-color-primary-contrast: #3D2E0A;
+  --gf-color-in-ctrl: rgba(255,255,255,0.08);
+  --gf-color-in-ctrl-contrast: #FFFFFF;
+  --gf-color-out-ctrl-light: rgba(240,244,239,0.28);
+}
+#gform_wrapper_1 .gform_fields { display: flex !important; gap: 8px !important; flex-wrap: wrap !important; }
+#gform_wrapper_1 .gfield { margin: 0 !important; }
+#gform_wrapper_1 .gfield--type-email { flex: 1 1 150px !important; }
+#gform_wrapper_1 .gfield--type-submit { flex: 0 0 auto !important; }
+#gform_wrapper_1 label.gfield_label { display: none !important; }
+#gform_wrapper_1 input[type="email"] {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(240,244,239,0.28) !important;
+  border-radius: 8px !important;
+  color: #FFFFFF !important;
+  padding: 11px 13px !important;
+  font-family: 'Lato', sans-serif !important;
+  font-size: 13.5px !important;
+  width: 100% !important;
+}
+#gform_wrapper_1 input[type="email"]::placeholder { color: rgba(240,244,239,0.5) !important; }
+#gform_wrapper_1 .gform-button {
+  background: #4FA3A5 !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-family: 'Lato', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  padding: 11px 18px !important;
+  white-space: nowrap;
+}
+#gform_wrapper_1 .gform-button:hover { background: #5fb3b5 !important; }
+#gform_wrapper_1 .gform_footer,
+#gform_wrapper_1 .gform-footer { display: none !important; }
+
+/* ---- Through the lens + NRM lockup (#block-19) ----
+   IMPORTANT / why this is written the way it is:
+   Kadence regenerates every hashed class inside this block (.kb-image...,
+   .kb-row-layout-id..., .kt-adv-heading...) whenever you swap an image or
+   re-save the row. That has already broken this section twice. The section
+   widget id (#block-19) is STABLE, so from now on everything is anchored to
+   #block-19 + structural selectors (.kt-has-4-columns, :first-child /
+   :last-child, figure.wp-block-kadence-image). Do NOT reintroduce the hashed
+   classes here; if you swap the lens photos again this will keep working.
+     lens grid            #block-19 .kt-row-column-wrap.kt-has-4-columns
+     lens photos          #block-19 .kt-has-4-columns figure.wp-block-kadence-image
+     "Through the lens"   #block-19 lens column > heading
+     NRM funder text      #block-19 last column .wp-block-kadence-advancedheading
+     NRM logo             #block-19 last column figure.wp-block-kadence-image */
+
+/* Outer row padding trim (keeps the 2-col lens|NRM split from the markup) */
+#block-19 > .kb-row-layout-wrap > .kt-row-column-wrap {
+  padding-top: 6px !important;
+  padding-bottom: 10px !important;
+}
+/* "Through the lens" label spacing above the grid */
+#block-19 > .kb-row-layout-wrap > .kt-row-column-wrap
+  > .wp-block-kadence-column:first-child
+  > .kt-inside-inner-col > .wp-block-kadence-advancedheading {
+  margin-bottom: 14px !important;
+}
+
+/* LENS GRID: uniform 3:2 thumbnails, 6px radius, even gap.
+   The markup sizes its 4 columns with a calc() tuned to the theme's 2rem gap,
+   so a bare gap change would leave dead space on the right. Overriding to a
+   clean repeat(4, 1fr) lets the columns re-fit the gap. */
+#block-19 .kt-row-column-wrap.kt-has-4-columns {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  column-gap: 10px !important;
+  row-gap: 10px !important;
+  padding-top: 5px !important;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #block-19 .kt-row-column-wrap.kt-has-4-columns {
+    column-gap: 12px !important;
+    row-gap: 12px !important;
+  }
+}
+#block-19 .kt-has-4-columns figure.wp-block-kadence-image {
+  aspect-ratio: 3 / 2 !important;   /* equal size across all four, whatever the source ratio */
+  overflow: hidden !important;
+  border-radius: 6px !important;
+  margin: 0 !important;
+  background-color: #0a3b45;         /* load-in fallback, matches the prototype */
+}
+#block-19 .kt-has-4-columns figure.wp-block-kadence-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: filter .15s;
+}
+#block-19 .kt-has-4-columns figure.wp-block-kadence-image:hover img {
+  filter: brightness(1.12);          /* prototype hover */
+}
+/* Mobile: 2x2 grid instead of a single tall stack, to cut scrolling */
+@media (max-width: 767px) {
+  #block-19 .kt-row-column-wrap.kt-has-4-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    column-gap: 8px !important;
+    row-gap: 8px !important;
+    padding-top: 10px !important;
+  }
+}
+
+/* NRM funder lockup (last column of the outer row). */
+/* Desktop: keep the capped width + right alignment set inline; only pull the
+   logo tight to the funding text (0 top margin). */
+@media (min-width: 1025px) {
+  #block-19 > .kb-row-layout-wrap > .kt-row-column-wrap
+    > .wp-block-kadence-column:last-child figure.wp-block-kadence-image {
+    margin-top: 0px !important;
+  }
+}
+/* Tablet + mobile: funding text full width and left-aligned; logo gets a
+   little top space and is pulled up 10px at the bottom. */
+@media (max-width: 1024px) {
+  #block-19 > .kb-row-layout-wrap > .kt-row-column-wrap
+    > .wp-block-kadence-column:last-child .wp-block-kadence-advancedheading {
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+  #block-19 > .kb-row-layout-wrap > .kt-row-column-wrap
+    > .wp-block-kadence-column:last-child figure.wp-block-kadence-image {
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+  }
+}
+
+
+
+/* ---- Copyright row (#block-17): simple line, divider above ---- */
+#block-17 { border-top: 1px solid rgba(240,244,239,0.14) !important; }
+#block-17 > .kb-row-layout-wrap > .kt-row-column-wrap {
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+#block-17 p { margin: 0 !important; font-size: 12.5px !important; }
+/* leftover empty column from the old two-item layout, so copyright sits clean-left */
+.kadence-column4f3d97-0b { display: none !important; }
+
+/* ---- Acknowledgment bar (#block-18): full-bleed ---- */
+#block-18 {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  background: #0a3b45 !important;
+}
+#block-18 .kt-row-column-wrap,
+#block-18 .wp-block-kadence-column,
+#block-18 .kt-inside-inner-col {
+  max-width: none !important;
+}
+#block-18 > .kb-row-layout-wrap > .kt-row-column-wrap {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+#block-18 p {
+  padding: 0px 20px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  color: rgba(240,244,239,0.62) !important;
+}
+
+/* ============================================================
+   INTERIOR HERO (global; every interior page hero shares this)
+   ============================================================ */
+.hero__sub{ font-family:var(--display); font-style:italic; font-weight:400; color:var(--reed-white); margin:0 }
+.hero{ position:relative !important; min-height:560px; display:flex !important; align-items:flex-end !important; overflow:hidden }
+.hero > .kt-row-layout-overlay{
+  background:linear-gradient(180deg, rgba(14,76,89,.60) 0%, rgba(14,76,89,.85) 100%) !important;
+  opacity:1 !important;
+  transition:opacity .5s ease;
+}
+.hero > .kt-row-column-wrap{
+  z-index:2; width:100%;
+  max-width:1000px !important; margin-left:auto !important; margin-right:auto !important;
+  padding:180px 0 70px 180px !important;
+  transition:opacity .45s ease;
+}
+.hero .kt-inside-inner-col {
+  text-align: left !important;
+  margin-right: -120px;
+}
+@media (max-width: 1024px) {
+  .hero .kt-inside-inner-col { margin-right: 0px !important; }
+  .hero > .kt-row-column-wrap {
+    padding-left: 40px !important;
+    padding-right: 20px !important;
+  }
+}
+.hero h1{ font-size:clamp(42px,5vw,72px) !important; line-height:1.05 !important; margin-bottom:18px !important; text-align:left !important }
+.hero .hero__sub{ font-size:clamp(18px,1.8vw,23px) !important; line-height:1.5 !important; max-width:680px; text-align:left !important }
+.hero .kt-row-column-wrap > .wp-block-kadence-column:last-child{
+  position:absolute; right:var(--gutter); bottom:50px; z-index:3; width:auto; margin:0;
+}
+.hero .caption{ margin:0 !important; font-style: normal !important }
+@media (hover:hover){
+  .hero:hover > .kt-row-layout-overlay{ opacity:.08 !important }
+  .hero:hover > .kt-row-column-wrap{ opacity:0 }
+  .hero:has(> .kt-row-column-wrap:hover) > .kt-row-layout-overlay{ opacity:1 !important }
+  .hero:has(> .kt-row-column-wrap:hover) > .kt-row-column-wrap{ opacity:1 }
+}
+@media (max-width:768px){
+  .hero{ min-height:440px }
+  .hero > .kt-row-column-wrap{ padding:90px 20px 52px 20px !important }
+  .hero .kt-row-column-wrap > .wp-block-kadence-column:last-child{ bottom:20px; right: 20px !important }
+}
