@@ -579,3 +579,22 @@ ul.kb-navigation.menu.collapse-sub-nav-desktop-true.collapse-sub-nav-tablet-true
   .hero > .kt-row-column-wrap{ padding:90px 20px 52px 20px !important }
   .hero .kt-row-column-wrap > .wp-block-kadence-column:last-child{ bottom:20px; right: 20px !important }
 }
+
+/* ============================================================
+   LIVE TELEMETRY STRIP (#telemetry-section): remove stray dashed hairline
+   The faint silver "- - -" line under the hero is the telemetry Row's
+   border-top: 2px dashed rgba(255,255,255,0.25) (a leftover from the
+   prototype's "stacked" telemetry variant). There is also a faint dark
+   border-bottom on the same row. Neither is wanted now, so both are removed.
+   NOTE: that border was set with !important AND Kadence prints per-block CSS
+   after Additional CSS, so a single #telemetry-section would tie on
+   specificity and lose on source order. The doubled id (#telemetry-section
+   #telemetry-section) outranks it outright, so this wins regardless of order.
+   CLEANEST FIX AT SOURCE: if you'd rather not carry an override, open the
+   telemetry Row in the editor and clear its top/bottom Border (or delete the
+   border line in that Row's Custom CSS field), then this block isn't needed.
+   ============================================================ */
+#telemetry-section#telemetry-section {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
